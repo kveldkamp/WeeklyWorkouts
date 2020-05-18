@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7bc-5e-7ZP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weekly Workouts-->
+        <scene sceneID="4ie-5r-hVF">
+            <objects>
+                <tableViewController title="Weekly Workouts" id="7bc-5e-7ZP" customClass="WeeklyWorkoutOverview" customModule="Weekly_Workouts" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="azg-X1-yrn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutCell" rowHeight="75" id="66f-Qp-x0z" customClass="WorkoutCell" customModule="Weekly_Workouts" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="66f-Qp-x0z" id="itU-2W-vmF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAz-Nc-Ppf">
+                                            <rect key="frame" x="15" y="22" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="complete:" destination="66f-Qp-x0z" eventType="valueChanged" id="tjw-Ef-fre"/>
+                                            </connections>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkP-zl-Ym5">
+                                            <rect key="frame" x="79" y="5" width="310" height="65"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="QkP-zl-Ym5" secondAttribute="bottom" constant="5" id="FA7-7t-aRP"/>
+                                        <constraint firstAttribute="trailing" secondItem="QkP-zl-Ym5" secondAttribute="trailing" constant="25" id="NIN-ET-mB6"/>
+                                        <constraint firstItem="mAz-Nc-Ppf" firstAttribute="leading" secondItem="itU-2W-vmF" secondAttribute="leading" constant="15" id="Nr2-f9-DVX"/>
+                                        <constraint firstItem="QkP-zl-Ym5" firstAttribute="centerY" secondItem="itU-2W-vmF" secondAttribute="centerY" id="aFw-bt-Qht"/>
+                                        <constraint firstItem="QkP-zl-Ym5" firstAttribute="leading" secondItem="mAz-Nc-Ppf" secondAttribute="trailing" constant="15" id="gey-ma-DC8"/>
+                                        <constraint firstItem="mAz-Nc-Ppf" firstAttribute="centerY" secondItem="itU-2W-vmF" secondAttribute="centerY" id="sBa-IK-1WI"/>
+                                        <constraint firstItem="QkP-zl-Ym5" firstAttribute="top" secondItem="itU-2W-vmF" secondAttribute="top" constant="5" id="z7g-3O-qBN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="completedSwitch" destination="mAz-Nc-Ppf" id="v4b-NC-Q24"/>
+                                    <outlet property="shortDescription" destination="QkP-zl-Ym5" id="1Mt-vY-fCc"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7bc-5e-7ZP" id="clX-s0-VTC"/>
+                            <outlet property="delegate" destination="7bc-5e-7ZP" id="VGA-eI-4PL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Weekly Workouts" id="fwt-2a-5uh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="twh-qq-hil" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-707.24637681159425" y="-56.25"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dTx-PB-Uvm">
+            <objects>
+                <navigationController id="27B-si-fN0" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vZg-s0-ax2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7bc-5e-7ZP" kind="relationship" relationship="rootViewController" id="T3J-qV-y3e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDC-nU-Blo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1628" y="-56"/>
+        </scene>
+    </scenes>
+</document>
