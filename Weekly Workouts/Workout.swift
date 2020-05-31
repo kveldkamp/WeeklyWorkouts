@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Workout{
+class WorkoutCached{
     var shortDescription: String
     var longDescription: String
     var completed: Bool

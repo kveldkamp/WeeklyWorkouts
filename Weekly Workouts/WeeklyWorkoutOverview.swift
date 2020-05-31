@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 class WeeklyWorkoutOverview: UITableViewController {
 
-    let workout1 = Workout(shortDescription: "HIIT type workout", longDescription: "Something to get the blood flowing either upper body or lower body, but not strictly lifting weights or cardio, some hybrid", completed: false)
-    let workout2 = Workout(shortDescription: "Hill sprints", longDescription: "do 3 sets", completed: false)
-    let workout3 = Workout(shortDescription: "Bike ride", longDescription: "go for a longer-ish bike ride", completed: false)
-    let workout4 = Workout(shortDescription: "HIIT type workout", longDescription: "Something to get the blood flowing either upper body or lower body, but not strictly lifting weights or cardio, some hybrid", completed: false)
-    var weeklyWorkouts = [Workout]()
+   
+    let workout1 = WorkoutCached(shortDescription: "Hill sprints", longDescription: "do 3 sets", completed: false)
+    let workout2 = WorkoutCached(shortDescription: "Bike ride", longDescription: "go for a longer-ish bike ride", completed: false)
+    let workout3 = WorkoutCached(shortDescription: "NTC program", longDescription: "part 1 of ntc for the week", completed: false)
+    let workout4 = WorkoutCached(shortDescription: "NTC program", longDescription: "part 2 of ntc for the week", completed: false)
+    let workout5 = WorkoutCached(shortDescription: "NTC program", longDescription: "part 3 of ntc for the week", completed: false)
+    let workout6 = WorkoutCached(shortDescription: "Hip Exercises", longDescription: "follow link in work laptop bookmarks", completed: false)
+    let workout7 = WorkoutCached(shortDescription: "Hip Exercises", longDescription: "follow link in work laptop bookmarks", completed: false)
+    let workout8 = WorkoutCached(shortDescription: "Hip Exercises", longDescription: "follow link in work laptop bookmarks", completed: false)
+    var weeklyWorkoutsCached = [WorkoutCached]()
+    var weeklyWorkouts = [NSManagedObject]()
     
     
 
@@ -24,17 +31,79 @@ class WeeklyWorkoutOverview: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        attachWorkouts()
+        loadWorkouts()
+        saveWorkouts()
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     
-    func attachWorkouts(){
-        weeklyWorkouts.append(workout1)
-        weeklyWorkouts.append(workout2)
-        weeklyWorkouts.append(workout3)
-        weeklyWorkouts.append(workout4)
+    func saveWorkouts(){
+        guard weeklyWorkouts.count == 0 else {return}
+        weeklyWorkoutsCached.append(workout1)
+        weeklyWorkoutsCached.append(workout2)
+        weeklyWorkoutsCached.append(workout3)
+        weeklyWorkoutsCached.append(workout4)
+        weeklyWorkoutsCached.append(workout5)
+        weeklyWorkoutsCached.append(workout6)
+        weeklyWorkoutsCached.append(workout7)
+        weeklyWorkoutsCached.append(workout8)
+        
+        for workout in weeklyWorkoutsCached{
+            saveWorkoutToCoreData(workoutCached: workout)
+        }
+        
+    }
+    
+    func saveWorkoutToCoreData(workoutCached: WorkoutCached){
+        guard let appDelegate =
+          UIApplication.shared.delegate as? AppDelegate else {
+          return
+        }
+        
+        // 1
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+          NSEntityDescription.entity(forEntityName: "Workout", in: managedContext)!
+        let workout = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        // 3
+        workout.setValue(workoutCached.shortDescription , forKeyPath: "shortSummary")
+        workout.setValue(workoutCached.longDescription, forKeyPath: "longSummary")
+        workout.setValue(workoutCached.completed, forKeyPath: "completed")
+        
+        // 4
+        do {
+          try managedContext.save()
+            weeklyWorkouts.append(workout)
+        } catch let error as NSError {
+          print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func loadWorkouts(){
+        //1
+        guard let appDelegate =
+          UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+          NSFetchRequest<NSManagedObject>(entityName: "Workout")
+        
+        //3
+        do {
+          weeklyWorkouts = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+          print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     
@@ -48,8 +117,10 @@ class WeeklyWorkoutOverview: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let workoutCell = tableView.dequeueReusableCell(withIdentifier: "workoutCell") as! WorkoutCell
-        workoutCell.shortDescription.text = weeklyWorkouts[indexPath.row].shortDescription
-        workoutCell.completedSwitch.isOn = weeklyWorkouts[indexPath.row].completed
+        let workout = weeklyWorkouts[indexPath.row]
+
+        workoutCell.shortDescription.text =  workout.value(forKeyPath: "shortSummary") as? String
+        workoutCell.completedSwitch.isOn = workout.value(forKeyPath: "completed") as! Bool
         return workoutCell
     }
     
