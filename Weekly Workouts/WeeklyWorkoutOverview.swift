@@ -106,6 +106,53 @@ class WeeklyWorkoutOverview: UITableViewController {
         }
     }
     
+    func completeWorkout(workout: NSManagedObject){
+        guard let appDelegate =
+          UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        workout.setValue(true, forKeyPath: "completed")
+        do {
+            try managedContext.save()
+        }
+        catch{
+            print("unable to complete workout")
+        }
+    }
+    
+    func undoWorkout(workout: NSManagedObject){
+        guard let appDelegate =
+          UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        workout.setValue(false, forKeyPath: "completed")
+        do {
+            try managedContext.save()
+        }
+        catch{
+            print("unable to complete workout")
+        }
+    }
+    
+    
+    @objc func workoutSwitchChanged(uiSwitch: UISwitch){
+        guard uiSwitch.tag < weeklyWorkouts.count else { // safe indexing
+            print("index out of bounds on switch error")
+            return
+        }
+        let workout = weeklyWorkouts[uiSwitch.tag]
+        
+        if uiSwitch.isOn{
+            completeWorkout(workout: workout)
+        }
+        else if !uiSwitch.isOn {
+            undoWorkout(workout: workout)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weeklyWorkouts.count
@@ -121,6 +168,8 @@ class WeeklyWorkoutOverview: UITableViewController {
 
         workoutCell.shortDescription.text =  workout.value(forKeyPath: "shortSummary") as? String
         workoutCell.completedSwitch.isOn = workout.value(forKeyPath: "completed") as! Bool
+        workoutCell.completedSwitch.tag = indexPath.row
+        workoutCell.completedSwitch.addTarget(self, action: #selector(workoutSwitchChanged(uiSwitch:)), for: UIControl.Event.valueChanged)
         return workoutCell
     }
     

@@ -24,9 +24,6 @@
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAz-Nc-Ppf">
                                             <rect key="frame" x="15" y="22" width="51" height="31"/>
-                                            <connections>
-                                                <action selector="complete:" destination="66f-Qp-x0z" eventType="valueChanged" id="tjw-Ef-fre"/>
-                                            </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkP-zl-Ym5">
                                             <rect key="frame" x="79" y="5" width="310" height="65"/>

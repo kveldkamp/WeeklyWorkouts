@@ -12,11 +12,4 @@ class WorkoutCell: UITableViewCell{
     
     @IBOutlet weak var completedSwitch: UISwitch!
     @IBOutlet weak var shortDescription: UILabel!
-    
-    
-    @IBAction func complete(_ sender: Any) {
-        
-        
-    }
-    
 }
