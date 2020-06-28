@@ -23,6 +23,9 @@ class WeeklyWorkoutOverview: UITableViewController {
     var weeklyWorkoutsCached = [WorkoutCached]()
     var weeklyWorkouts = [NSManagedObject]()
     
+    @IBOutlet weak var addWorkoutButton: UIBarButtonItem!
+    
+    
     
 
     
@@ -35,6 +38,7 @@ class WeeklyWorkoutOverview: UITableViewController {
         saveWorkouts()
         tableView.delegate = self
         tableView.dataSource = self
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     
@@ -153,6 +157,8 @@ class WeeklyWorkoutOverview: UITableViewController {
             undoWorkout(workout: workout)
         }
     }
+    
+    //MARK: tableView Delegate methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weeklyWorkouts.count
