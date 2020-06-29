@@ -25,6 +25,7 @@
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAz-Nc-Ppf">
                                             <rect key="frame" x="15" y="22" width="51" height="31"/>
+                                            <color key="onTintColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkP-zl-Ym5">
                                             <rect key="frame" x="79" y="5" width="310" height="65"/>
@@ -56,8 +57,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Weekly Workouts" id="fwt-2a-5uh">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="0bA-BQ-I1b">
+                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="geN-de-vmw" kind="presentation" id="c2z-Sa-U1V"/>
+                                <segue destination="G1y-3Y-KzT" kind="presentation" id="c2z-Sa-U1V"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -70,21 +72,89 @@
             </objects>
             <point key="canvasLocation" x="-707.24637681159425" y="-56.25"/>
         </scene>
-        <!--View Controller-->
+        <!--Add a Workout-->
         <scene sceneID="hnf-dR-OWM">
             <objects>
-                <viewController id="geN-de-vmw" sceneMemberID="viewController">
+                <viewController title="Add a Workout" id="geN-de-vmw" customClass="AddWorkoutVC" customModule="Weekly_Workouts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dRC-lA-UBM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter workout name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMJ-7b-nYw">
+                                <rect key="frame" x="25" y="106" width="364" height="42"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Enter a longer description here (optional)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C4q-n4-MEb">
+                                <rect key="frame" x="25" y="185" width="352" height="168.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9i-mV-MNO">
+                                <rect key="frame" x="25" y="84" width="96" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27Y-u7-tlm">
+                                <rect key="frame" x="25" y="153" width="110" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibI-BZ-sz7">
+                                <rect key="frame" x="25" y="716" width="364" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Save Workout">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveWorkout:" destination="geN-de-vmw" eventType="touchUpInside" id="K69-0Y-Kfe"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="C4q-n4-MEb" firstAttribute="height" secondItem="dRC-lA-UBM" secondAttribute="height" multiplier="0.2" id="1ic-yr-RM8"/>
+                            <constraint firstItem="C4q-n4-MEb" firstAttribute="leading" secondItem="uMJ-7b-nYw" secondAttribute="leading" id="5uf-5T-e05"/>
+                            <constraint firstItem="A9i-mV-MNO" firstAttribute="leading" secondItem="uMJ-7b-nYw" secondAttribute="leading" id="FZe-Nz-y1y"/>
+                            <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="27Y-u7-tlm" secondAttribute="trailing" symbolic="YES" id="JwH-AL-4g1"/>
+                            <constraint firstItem="uMJ-7b-nYw" firstAttribute="top" secondItem="A9i-mV-MNO" secondAttribute="bottom" constant="5" id="Km5-0B-1EU"/>
+                            <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" secondItem="ibI-BZ-sz7" secondAttribute="trailing" constant="25" id="LQ5-iz-DAg"/>
+                            <constraint firstItem="n4L-uo-smc" firstAttribute="bottom" secondItem="ibI-BZ-sz7" secondAttribute="bottom" constant="50" id="MZR-id-F2H"/>
+                            <constraint firstItem="uMJ-7b-nYw" firstAttribute="leading" secondItem="n4L-uo-smc" secondAttribute="leading" constant="25" id="SaK-pi-Xch"/>
+                            <constraint firstItem="C4q-n4-MEb" firstAttribute="top" secondItem="27Y-u7-tlm" secondAttribute="bottom" constant="15" id="Uxj-ih-vGV"/>
+                            <constraint firstItem="27Y-u7-tlm" firstAttribute="leading" secondItem="C4q-n4-MEb" secondAttribute="leading" id="Vnv-S8-27z"/>
+                            <constraint firstItem="uMJ-7b-nYw" firstAttribute="height" secondItem="C4q-n4-MEb" secondAttribute="height" multiplier="0.25" id="ZbU-tW-xv3"/>
+                            <constraint firstItem="ibI-BZ-sz7" firstAttribute="leading" secondItem="n4L-uo-smc" secondAttribute="leading" constant="25" id="hZD-14-bD9"/>
+                            <constraint firstItem="27Y-u7-tlm" firstAttribute="top" secondItem="uMJ-7b-nYw" secondAttribute="bottom" constant="5" id="mdf-69-asc"/>
+                            <constraint firstItem="uMJ-7b-nYw" firstAttribute="top" secondItem="n4L-uo-smc" secondAttribute="top" constant="50" id="na8-gq-Cwe"/>
+                            <constraint firstItem="C4q-n4-MEb" firstAttribute="width" secondItem="uMJ-7b-nYw" secondAttribute="width" multiplier="0.967033" id="rtW-oA-htv"/>
+                            <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A9i-mV-MNO" secondAttribute="trailing" symbolic="YES" id="szm-rL-9Ya"/>
+                            <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" secondItem="uMJ-7b-nYw" secondAttribute="trailing" constant="25" id="xep-8a-mUH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="n4L-uo-smc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8h4-Pu-iIF"/>
+                    <navigationItem key="navigationItem" title="Add a Workout" id="8h4-Pu-iIF">
+                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="Uk5-xl-5ON">
+                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="dismissView:" destination="geN-de-vmw" id="iRL-ON-6ld"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="longDescription" destination="C4q-n4-MEb" id="b1t-77-AXq"/>
+                        <outlet property="shortDescription" destination="uMJ-7b-nYw" id="ADw-S2-KFj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDS-B4-cNJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="107" y="-55"/>
+            <point key="canvasLocation" x="946" y="-591"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dTx-PB-Uvm">
@@ -102,8 +172,27 @@
             </objects>
             <point key="canvasLocation" x="-1628" y="-56"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SAG-qh-NEv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G1y-3Y-KzT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fVS-w1-94I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="geN-de-vmw" kind="relationship" relationship="rootViewController" id="dg4-I8-RYh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SVF-4q-NLI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="101" y="-591"/>
+        </scene>
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
     </resources>
 </document>

@@ -10,17 +10,7 @@ import UIKit
 import CoreData
 
 class WeeklyWorkoutOverview: UITableViewController {
-
-   
-    let workout1 = WorkoutCached(shortDescription: "Hill sprints", longDescription: "do 3 sets", completed: false)
-    let workout2 = WorkoutCached(shortDescription: "Bike ride", longDescription: "go for a longer-ish bike ride", completed: false)
-    let workout3 = WorkoutCached(shortDescription: "NTC program", longDescription: "part 1 of ntc for the week", completed: false)
-    let workout4 = WorkoutCached(shortDescription: "NTC program", longDescription: "part 2 of ntc for the week", completed: false)
-    let workout5 = WorkoutCached(shortDescription: "NTC program", longDescription: "part 3 of ntc for the week", completed: false)
-    let workout6 = WorkoutCached(shortDescription: "Hip Exercises", longDescription: "follow link in work laptop bookmarks", completed: false)
-    let workout7 = WorkoutCached(shortDescription: "Hip Exercises", longDescription: "follow link in work laptop bookmarks", completed: false)
-    let workout8 = WorkoutCached(shortDescription: "Hip Exercises", longDescription: "follow link in work laptop bookmarks", completed: false)
-    var weeklyWorkoutsCached = [WorkoutCached]()
+    
     var weeklyWorkouts = [NSManagedObject]()
     
     @IBOutlet weak var addWorkoutButton: UIBarButtonItem!
@@ -35,28 +25,19 @@ class WeeklyWorkoutOverview: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         loadWorkouts()
-        saveWorkouts()
         tableView.delegate = self
         tableView.dataSource = self
         self.navigationController?.navigationBar.isHidden = false
+        NotificationCenter.default.addObserver(self, selector: #selector(workoutDataUpdated), name: NSNotification.Name.CoreData.WorkoutAdded, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadWorkouts()
+    }
     
-    func saveWorkouts(){
-        guard weeklyWorkouts.count == 0 else {return}
-        weeklyWorkoutsCached.append(workout1)
-        weeklyWorkoutsCached.append(workout2)
-        weeklyWorkoutsCached.append(workout3)
-        weeklyWorkoutsCached.append(workout4)
-        weeklyWorkoutsCached.append(workout5)
-        weeklyWorkoutsCached.append(workout6)
-        weeklyWorkoutsCached.append(workout7)
-        weeklyWorkoutsCached.append(workout8)
-        
-        for workout in weeklyWorkoutsCached{
-            saveWorkoutToCoreData(workoutCached: workout)
-        }
-        
+    @objc func workoutDataUpdated(){
+        loadWorkouts()
     }
     
     func saveWorkoutToCoreData(workoutCached: WorkoutCached){
@@ -88,6 +69,13 @@ class WeeklyWorkoutOverview: UITableViewController {
         }
     }
     
+    func deleteWorkoutFromCoreData(workout: NSManagedObject){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(workout)
+    }
+    
     func loadWorkouts(){
         //1
         guard let appDelegate =
@@ -105,6 +93,7 @@ class WeeklyWorkoutOverview: UITableViewController {
         //3
         do {
           weeklyWorkouts = try managedContext.fetch(fetchRequest)
+            tableView.reloadData()
         } catch let error as NSError {
           print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -138,7 +127,7 @@ class WeeklyWorkoutOverview: UITableViewController {
             try managedContext.save()
         }
         catch{
-            print("unable to complete workout")
+            print("unable to undo workout")
         }
     }
     
@@ -181,6 +170,17 @@ class WeeklyWorkoutOverview: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let workout = weeklyWorkouts[indexPath.row]
+            deleteWorkoutFromCoreData(workout: workout)
+            weeklyWorkouts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
 
 
