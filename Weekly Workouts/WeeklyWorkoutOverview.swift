@@ -187,10 +187,6 @@ class WeeklyWorkoutOverview: UITableViewController {
         return weeklyWorkouts.count
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let workoutCell = tableView.dequeueReusableCell(withIdentifier: "workoutCell") as! WorkoutCell
         let workout = weeklyWorkouts[indexPath.row]
@@ -204,6 +200,15 @@ class WeeklyWorkoutOverview: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedWorkout = weeklyWorkouts[indexPath.row]
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WorkoutDetail") as? WorkoutDetailVC{
+            vc.shortText = selectedWorkout.value(forKeyPath: "shortSummary") as? String ?? "unknown"
+            vc.longText = selectedWorkout.value(forKeyPath: "longSummary") as? String ?? "unknown"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

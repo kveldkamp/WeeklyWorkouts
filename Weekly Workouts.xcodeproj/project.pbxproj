@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761CC8E224B41DA2005F8F9F /* WorkoutDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */; };
 		762745FE247250460002D7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762745FD247250460002D7A8 /* AppDelegate.swift */; };
 		76274600247250460002D7A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762745FF247250460002D7A8 /* SceneDelegate.swift */; };
 		76274602247250460002D7A8 /* WeeklyWorkoutOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76274601247250460002D7A8 /* WeeklyWorkoutOverview.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailVC.swift; sourceTree = "<group>"; };
 		762745FA247250460002D7A8 /* Weekly Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weekly Workouts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		762745FD247250460002D7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		762745FF247250460002D7A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				7627460E247250480002D7A8 /* Info.plist */,
 				76274606247250460002D7A8 /* Weekly_Workouts.xcdatamodeld */,
 				76C58DB624A9B96B001AB553 /* Extensions.swift */,
+				761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */,
 			);
 			path = "Weekly Workouts";
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				76350318247259020091211C /* WorkoutCell.swift in Sources */,
 				762745FE247250460002D7A8 /* AppDelegate.swift in Sources */,
 				76C58DB724A9B96B001AB553 /* Extensions.swift in Sources */,
+				761CC8E224B41DA2005F8F9F /* WorkoutDetailVC.swift in Sources */,
 				76274608247250460002D7A8 /* Weekly_Workouts.xcdatamodeld in Sources */,
 				76274600247250460002D7A8 /* SceneDelegate.swift in Sources */,
 				766000FB24725A3D0069B740 /* Workout.swift in Sources */,
