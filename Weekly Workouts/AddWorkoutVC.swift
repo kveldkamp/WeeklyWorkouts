@@ -15,6 +15,7 @@ class AddWorkoutVC: UIViewController {
     @IBOutlet weak var shortDescription: UITextField!
     @IBOutlet weak var longDescription: UITextView!
     
+    @IBOutlet weak var saveWorkoutButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class AddWorkoutVC: UIViewController {
         longDescription.delegate = self
         shortDescription.layer.borderWidth = 0
         shortDescription.delegate = self
+        saveWorkoutButton.layer.cornerRadius = 5
     }
     
     
@@ -56,7 +58,7 @@ class AddWorkoutVC: UIViewController {
               // 4
               do {
                 try managedContext.save()
-                NotificationCenter.default.post(name: NSNotification.Name.CoreData.WorkoutAdded, object: nil, userInfo: nil)
+                NotificationCenter.default.post(name: NSNotification.Name.CoreData.WorkoutAdded, object: nil)
                 self.dismiss(animated: true, completion: nil)
               } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
@@ -85,6 +87,15 @@ extension AddWorkoutVC: UITextViewDelegate{
         let placeHolder = "Enter a longer description here (optional)"
         if textView.text == placeHolder{
             textView.text = ""
+            textView.textColor = UIColor.black
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

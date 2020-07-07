@@ -31,9 +31,37 @@ class WeeklyWorkoutOverview: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(workoutDataUpdated), name: NSNotification.Name.CoreData.WorkoutAdded, object: nil)
     }
     
+    func checkForWorkoutReset(){
+        guard UserDefaults.standard.string(forKey: "LastTimeUsed") != nil else {
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            let now = df.string(from: Date())
+            UserDefaults.standard.set(now, forKey: "LastTimeUsed")
+            return
+        }
+        let lastTimeUsed = UserDefaults.standard.string(forKey: "LastTimeUsed")
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        if let lastTimeUsed = lastTimeUsed{
+            if let lastTimeUsedDate = df.date(from: lastTimeUsed){
+                let now = Date()
+                if now.compare(lastTimeUsedDate) == .orderedDescending{
+                    let lastUsedWeek = lastTimeUsedDate.get(.weekOfYear)
+                    let thisWeek = now.get(.weekOfYear)
+                    if lastUsedWeek != thisWeek{
+                        resetWorkouts()
+                    }
+                }
+            }
+        }
+       let now = df.string(from: Date())
+       UserDefaults.standard.set(now, forKey: "LastTimeUsed")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadWorkouts()
+        checkForWorkoutReset()
     }
     
     @objc func workoutDataUpdated(){
@@ -74,6 +102,12 @@ class WeeklyWorkoutOverview: UITableViewController {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         managedContext.delete(workout)
+    }
+    
+    func resetWorkouts() {
+        for workout in weeklyWorkouts{
+            undoWorkout(workout: workout)
+        }
     }
     
     func loadWorkouts(){
