@@ -117,13 +117,13 @@
 				76350317247259020091211C /* WorkoutCell.swift */,
 				766000FA24725A3D0069B740 /* Workout.swift */,
 				76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */,
+				761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */,
 				76274603247250460002D7A8 /* Main.storyboard */,
 				76274609247250480002D7A8 /* Assets.xcassets */,
 				7627460B247250480002D7A8 /* LaunchScreen.storyboard */,
 				7627460E247250480002D7A8 /* Info.plist */,
 				76274606247250460002D7A8 /* Weekly_Workouts.xcdatamodeld */,
 				76C58DB624A9B96B001AB553 /* Extensions.swift */,
-				761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */,
 			);
 			path = "Weekly Workouts";
 			sourceTree = "<group>";

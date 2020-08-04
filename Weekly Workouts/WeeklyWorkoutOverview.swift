@@ -16,11 +16,6 @@ class WeeklyWorkoutOverview: UITableViewController {
     @IBOutlet weak var addWorkoutButton: UIBarButtonItem!
     
     
-    
-
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,23 +29,22 @@ class WeeklyWorkoutOverview: UITableViewController {
     func checkForWorkoutReset(){
         guard UserDefaults.standard.string(forKey: "LastTimeUsed") != nil else {
             let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let now = df.string(from: Date())
             UserDefaults.standard.set(now, forKey: "LastTimeUsed")
             return
         }
         let lastTimeUsed = UserDefaults.standard.string(forKey: "LastTimeUsed")
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
         if let lastTimeUsed = lastTimeUsed{
             if let lastTimeUsedDate = df.date(from: lastTimeUsed){
-                let now = Date()
-                if now.compare(lastTimeUsedDate) == .orderedDescending{
-                    let lastUsedWeek = lastTimeUsedDate.get(.weekOfYear)
-                    let thisWeek = now.get(.weekOfYear)
-                    if lastUsedWeek != thisWeek{
-                        resetWorkouts()
-                    }
+
+                let lastUsedWeek = lastTimeUsedDate.get(.weekOfYear)
+                let thisWeek = Date().get(.weekOfYear)
+                if thisWeek != lastUsedWeek{
+                    resetWorkouts()
                 }
             }
         }
