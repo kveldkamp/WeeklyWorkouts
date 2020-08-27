@@ -16,11 +16,6 @@ class WeeklyWorkoutOverview: UITableViewController {
     @IBOutlet weak var addWorkoutButton: UIBarButtonItem!
     
     
-    
-
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,28 +29,43 @@ class WeeklyWorkoutOverview: UITableViewController {
     func checkForWorkoutReset(){
         guard UserDefaults.standard.string(forKey: "LastTimeUsed") != nil else {
             let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let now = df.string(from: Date())
             UserDefaults.standard.set(now, forKey: "LastTimeUsed")
             return
         }
         let lastTimeUsed = UserDefaults.standard.string(forKey: "LastTimeUsed")
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
         if let lastTimeUsed = lastTimeUsed{
             if let lastTimeUsedDate = df.date(from: lastTimeUsed){
                 let now = Date()
-                if now.compare(lastTimeUsedDate) == .orderedDescending{
-                    let lastUsedWeek = lastTimeUsedDate.get(.weekOfYear)
-                    let thisWeek = now.get(.weekOfYear)
-                    if lastUsedWeek != thisWeek{
+                
+                //TODO: add unit tests
+                let lastUsedWeek = lastTimeUsedDate.get(.weekOfYear)
+                let thisWeek = now.get(.weekOfYear)
+                
+                let weeksElapsed = thisWeek - lastUsedWeek
+                switch weeksElapsed{
+                case 1:
+                    // if only 1 week elapsed and new date is sunday, can ignore until monday
+                    // I want this to reset on sunday nights, but saturday and sunday are technically 'different' weeks
+                    if now.get(.weekday) != 1{
                         resetWorkouts()
                     }
+                case 0:
+                    // if comparing sunday to same "week", need to reset
+                    if lastTimeUsedDate.get(.weekday) == 1{
+                        resetWorkouts()
+                    }
+                default:
+                    resetWorkouts()
                 }
             }
         }
-       let now = df.string(from: Date())
-       UserDefaults.standard.set(now, forKey: "LastTimeUsed")
+        let now = df.string(from: Date())
+        UserDefaults.standard.set(now, forKey: "LastTimeUsed")
     }
     
     override func viewWillAppear(_ animated: Bool) {
