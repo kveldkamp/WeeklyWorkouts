@@ -8,6 +8,7 @@ target 'WeeklyWorkouts' do
   # Pods for WeeklyWorkouts
 
 pod 'Firebase/Firestore'
-pod 'FirebaseFirestoreSwift' 
+pod 'FirebaseFirestoreSwift'
+pod 'Firebase/Analytics'
 
 end

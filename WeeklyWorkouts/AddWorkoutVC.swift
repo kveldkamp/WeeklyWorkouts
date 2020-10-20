@@ -9,6 +9,9 @@
 import Foundation
 import CoreData
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class AddWorkoutVC: UIViewController {
     
@@ -16,6 +19,8 @@ class AddWorkoutVC: UIViewController {
     @IBOutlet weak var longDescription: UITextView!
     
     @IBOutlet weak var saveWorkoutButton: UIButton!
+    
+    var db: Firestore!
     
     
     override func viewDidLoad() {
@@ -27,6 +32,13 @@ class AddWorkoutVC: UIViewController {
         shortDescription.layer.borderWidth = 0
         shortDescription.delegate = self
         saveWorkoutButton.layer.cornerRadius = 5
+        
+        
+        //FireStore setup
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        // [END setup]
+        db = Firestore.firestore()
     }
     
     
@@ -41,6 +53,8 @@ class AddWorkoutVC: UIViewController {
                 return
               }
               
+            testOutFireBaseStorage()
+        
               // 1
               let managedContext =
                 appDelegate.persistentContainer.viewContext
@@ -69,6 +83,22 @@ class AddWorkoutVC: UIViewController {
     
     @IBAction func dismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func testOutFireBaseStorage(){
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        ref = db.collection("workout").addDocument(data: [
+            "shortSummary": "Run",
+            "longSummary": "Complete a run over 2 miles",
+            "completed" : false
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
     }
     
 }
