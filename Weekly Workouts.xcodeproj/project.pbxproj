@@ -91,9 +91,9 @@
 		762745F1247250460002D7A8 = {
 			isa = PBXGroup;
 			children = (
-				762745FC247250460002D7A8 /* Weekly Workouts */,
-				76274616247250490002D7A8 /* Weekly WorkoutsTests */,
-				76274621247250490002D7A8 /* Weekly WorkoutsUITests */,
+				762745FC247250460002D7A8 /* WeeklyWorkouts */,
+				76274616247250490002D7A8 /* WeeklyWorkoutsTests */,
+				76274621247250490002D7A8 /* WeeklyWorkoutsUITests */,
 				762745FB247250460002D7A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,7 +108,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		762745FC247250460002D7A8 /* Weekly Workouts */ = {
+		762745FC247250460002D7A8 /* WeeklyWorkouts */ = {
 			isa = PBXGroup;
 			children = (
 				762745FD247250460002D7A8 /* AppDelegate.swift */,
@@ -125,25 +125,25 @@
 				76274606247250460002D7A8 /* Weekly_Workouts.xcdatamodeld */,
 				76C58DB624A9B96B001AB553 /* Extensions.swift */,
 			);
-			path = "Weekly Workouts";
+			path = WeeklyWorkouts;
 			sourceTree = "<group>";
 		};
-		76274616247250490002D7A8 /* Weekly WorkoutsTests */ = {
+		76274616247250490002D7A8 /* WeeklyWorkoutsTests */ = {
 			isa = PBXGroup;
 			children = (
 				76274617247250490002D7A8 /* Weekly_WorkoutsTests.swift */,
 				76274619247250490002D7A8 /* Info.plist */,
 			);
-			path = "Weekly WorkoutsTests";
+			path = WeeklyWorkoutsTests;
 			sourceTree = "<group>";
 		};
-		76274621247250490002D7A8 /* Weekly WorkoutsUITests */ = {
+		76274621247250490002D7A8 /* WeeklyWorkoutsUITests */ = {
 			isa = PBXGroup;
 			children = (
 				76274622247250490002D7A8 /* Weekly_WorkoutsUITests.swift */,
 				76274624247250490002D7A8 /* Info.plist */,
 			);
-			path = "Weekly WorkoutsUITests";
+			path = WeeklyWorkoutsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
