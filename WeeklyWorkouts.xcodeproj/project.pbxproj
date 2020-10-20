@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailVC.swift; sourceTree = "<group>"; };
-		762745FA247250460002D7A8 /* Weekly Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weekly Workouts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		762745FA247250460002D7A8 /* WeeklyWorkouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeeklyWorkouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		762745FD247250460002D7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		762745FF247250460002D7A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		76274601247250460002D7A8 /* WeeklyWorkoutOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWorkoutOverview.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		762745FB247250460002D7A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				762745FA247250460002D7A8 /* Weekly Workouts.app */,
+				762745FA247250460002D7A8 /* WeeklyWorkouts.app */,
 				76274613247250490002D7A8 /* Weekly WorkoutsTests.xctest */,
 				7627461E247250490002D7A8 /* Weekly WorkoutsUITests.xctest */,
 			);
@@ -149,9 +149,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		762745F9247250460002D7A8 /* Weekly Workouts */ = {
+		762745F9247250460002D7A8 /* WeeklyWorkouts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76274627247250490002D7A8 /* Build configuration list for PBXNativeTarget "Weekly Workouts" */;
+			buildConfigurationList = 76274627247250490002D7A8 /* Build configuration list for PBXNativeTarget "WeeklyWorkouts" */;
 			buildPhases = (
 				762745F6247250460002D7A8 /* Sources */,
 				762745F7247250460002D7A8 /* Frameworks */,
@@ -161,9 +161,9 @@
 			);
 			dependencies = (
 			);
-			name = "Weekly Workouts";
+			name = WeeklyWorkouts;
 			productName = "Weekly Workouts";
-			productReference = 762745FA247250460002D7A8 /* Weekly Workouts.app */;
+			productReference = 762745FA247250460002D7A8 /* WeeklyWorkouts.app */;
 			productType = "com.apple.product-type.application";
 		};
 		76274612247250490002D7A8 /* Weekly WorkoutsTests */ = {
@@ -225,7 +225,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 762745F5247250460002D7A8 /* Build configuration list for PBXProject "Weekly Workouts" */;
+			buildConfigurationList = 762745F5247250460002D7A8 /* Build configuration list for PBXProject "WeeklyWorkouts" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -238,7 +238,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				762745F9247250460002D7A8 /* Weekly Workouts */,
+				762745F9247250460002D7A8 /* WeeklyWorkouts */,
 				76274612247250490002D7A8 /* Weekly WorkoutsTests */,
 				7627461D247250490002D7A8 /* Weekly WorkoutsUITests */,
 			);
@@ -310,12 +310,12 @@
 /* Begin PBXTargetDependency section */
 		76274615247250490002D7A8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 762745F9247250460002D7A8 /* Weekly Workouts */;
+			target = 762745F9247250460002D7A8 /* WeeklyWorkouts */;
 			targetProxy = 76274614247250490002D7A8 /* PBXContainerItemProxy */;
 		};
 		76274620247250490002D7A8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 762745F9247250460002D7A8 /* Weekly Workouts */;
+			target = 762745F9247250460002D7A8 /* WeeklyWorkouts */;
 			targetProxy = 7627461F247250490002D7A8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -462,7 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577J7R7E99;
-				INFOPLIST_FILE = "Weekly Workouts/Info.plist";
+				INFOPLIST_FILE = WeeklyWorkouts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 577J7R7E99;
-				INFOPLIST_FILE = "Weekly Workouts/Info.plist";
+				INFOPLIST_FILE = WeeklyWorkouts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,7 +505,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
-				INFOPLIST_FILE = "Weekly WorkoutsTests/Info.plist";
+				INFOPLIST_FILE = WeeklyWorkoutsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -527,7 +527,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
-				INFOPLIST_FILE = "Weekly WorkoutsTests/Info.plist";
+				INFOPLIST_FILE = WeeklyWorkoutsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -585,7 +585,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		762745F5247250460002D7A8 /* Build configuration list for PBXProject "Weekly Workouts" */ = {
+		762745F5247250460002D7A8 /* Build configuration list for PBXProject "WeeklyWorkouts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76274625247250490002D7A8 /* Debug */,
@@ -594,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76274627247250490002D7A8 /* Build configuration list for PBXNativeTarget "Weekly Workouts" */ = {
+		76274627247250490002D7A8 /* Build configuration list for PBXNativeTarget "WeeklyWorkouts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76274628247250490002D7A8 /* Debug */,

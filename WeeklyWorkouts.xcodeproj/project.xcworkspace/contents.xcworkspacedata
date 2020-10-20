@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Weekly Workouts.xcodeproj">
+      location = "self:/Users/kveldkamp/Documents/HomeProjects/WeeklyWorkouts/WeeklyWorkouts.xcodeproj">
    </FileRef>
 </Workspace>
