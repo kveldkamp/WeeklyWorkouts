@@ -20,4 +20,10 @@ extension Date{
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
+    
+    func toString() -> String{
+        let df = ISO8601DateFormatter()
+        let stringDate = df.string(from: self)
+        return stringDate
+    }
 }

@@ -27,17 +27,16 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     func checkForWorkoutReset(){
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
         guard UserDefaults.standard.string(forKey: "LastTimeUsed") != nil else {
-            let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let now = df.string(from: Date())
             UserDefaults.standard.set(now, forKey: "LastTimeUsed")
             return
         }
-        let lastTimeUsed = UserDefaults.standard.string(forKey: "LastTimeUsed")
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
+        let lastTimeUsed = UserDefaults.standard.string(forKey: "LastTimeUsed")
         if let lastTimeUsed = lastTimeUsed{
             if let lastTimeUsedDate = df.date(from: lastTimeUsed){
                 let now = Date()
@@ -70,7 +69,6 @@ class WeeklyWorkoutOverview: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadWorkouts()
         checkForWorkoutReset()
     }
     
@@ -78,40 +76,8 @@ class WeeklyWorkoutOverview: UITableViewController {
         loadWorkouts()
     }
     
-    func saveWorkoutToCoreData(workoutCached: WorkoutCached){
-        guard let appDelegate =
-          UIApplication.shared.delegate as? AppDelegate else {
-          return
-        }
-        
-        // 1
-        let managedContext =
-          appDelegate.persistentContainer.viewContext
-        
-        // 2
-        let entity =
-          NSEntityDescription.entity(forEntityName: "Workout", in: managedContext)!
-        let workout = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        // 3
-        workout.setValue(workoutCached.shortDescription , forKeyPath: "shortSummary")
-        workout.setValue(workoutCached.longDescription, forKeyPath: "longSummary")
-        workout.setValue(workoutCached.completed, forKeyPath: "completed")
-        
-        // 4
-        do {
-          try managedContext.save()
-            weeklyWorkouts.append(workout)
-        } catch let error as NSError {
-          print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
     func deleteWorkoutFromCoreData(workout: NSManagedObject){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        managedContext.delete(workout)
+        CoreDataManager.sharedInstance.context.delete(workout)
     }
     
     func resetWorkouts() {
@@ -121,22 +87,9 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     func loadWorkouts(){
-        //1
-        guard let appDelegate =
-          UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext =
-          appDelegate.persistentContainer.viewContext
-        
-        //2
-        let fetchRequest =
-          NSFetchRequest<NSManagedObject>(entityName: "Workout")
-        
-        //3
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Workout")
         do {
-          weeklyWorkouts = try managedContext.fetch(fetchRequest)
+            weeklyWorkouts = try CoreDataManager.sharedInstance.context.fetch(fetchRequest)
             tableView.reloadData()
         } catch let error as NSError {
           print("Could not fetch. \(error), \(error.userInfo)")
@@ -144,15 +97,10 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     func completeWorkout(workout: NSManagedObject){
-        guard let appDelegate =
-          UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         workout.setValue(true, forKeyPath: "completed")
         do {
-            try managedContext.save()
+            try CoreDataManager.sharedInstance.context.save()
+            //TODO: complete in firebase here if it has an ID
         }
         catch{
             print("unable to complete workout")
@@ -160,15 +108,10 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     func undoWorkout(workout: NSManagedObject){
-        guard let appDelegate =
-          UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         workout.setValue(false, forKeyPath: "completed")
         do {
-            try managedContext.save()
+            try CoreDataManager.sharedInstance.context.save()
+            //TODO: undo in firebase here if it has an ID
         }
         catch{
             print("unable to undo workout")

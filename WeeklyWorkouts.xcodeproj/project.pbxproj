@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76084EAB256B8ED70080FFD3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76084EAA256B8ED70080FFD3 /* CoreDataManager.swift */; };
 		761CC8E224B41DA2005F8F9F /* WorkoutDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */; };
 		762745FE247250460002D7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762745FD247250460002D7A8 /* AppDelegate.swift */; };
 		76274600247250460002D7A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762745FF247250460002D7A8 /* SceneDelegate.swift */; };
@@ -19,7 +20,7 @@
 		76274623247250490002D7A8 /* Weekly_WorkoutsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76274622247250490002D7A8 /* Weekly_WorkoutsUITests.swift */; };
 		7629C17C253EB4E8003B71E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7629C17B253EB4E8003B71E1 /* GoogleService-Info.plist */; };
 		76350318247259020091211C /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76350317247259020091211C /* WorkoutCell.swift */; };
-		766000FB24725A3D0069B740 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766000FA24725A3D0069B740 /* Workout.swift */; };
+		766000FB24725A3D0069B740 /* WorkoutCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766000FA24725A3D0069B740 /* WorkoutCached.swift */; };
 		76C58DB524A95C70001AB553 /* AddWorkoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */; };
 		76C58DB724A9B96B001AB553 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C58DB624A9B96B001AB553 /* Extensions.swift */; };
 		8F1B1D5557460F326D5AD967 /* Pods_WeeklyWorkouts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C222EB3C7A58D8C004F2A67 /* Pods_WeeklyWorkouts.framework */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		20CA3D2F046E28DFA0845EC7 /* Pods-WeeklyWorkouts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeklyWorkouts.release.xcconfig"; path = "Target Support Files/Pods-WeeklyWorkouts/Pods-WeeklyWorkouts.release.xcconfig"; sourceTree = "<group>"; };
 		4F377CDB18948F7E968407B8 /* Pods-WeeklyWorkouts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeklyWorkouts.debug.xcconfig"; path = "Target Support Files/Pods-WeeklyWorkouts/Pods-WeeklyWorkouts.debug.xcconfig"; sourceTree = "<group>"; };
+		76084EAA256B8ED70080FFD3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailVC.swift; sourceTree = "<group>"; };
 		762745FA247250460002D7A8 /* WeeklyWorkouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeeklyWorkouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		762745FD247250460002D7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		76274624247250490002D7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7629C17B253EB4E8003B71E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76350317247259020091211C /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
-		766000FA24725A3D0069B740 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		766000FA24725A3D0069B740 /* WorkoutCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCached.swift; sourceTree = "<group>"; };
 		76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutVC.swift; sourceTree = "<group>"; };
 		76C58DB624A9B96B001AB553 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9C222EB3C7A58D8C004F2A67 /* Pods_WeeklyWorkouts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeeklyWorkouts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		76084E71256B87AB0080FFD3 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				76C58DB624A9B96B001AB553 /* Extensions.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		76084EA9256B8EC90080FFD3 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				76084EAA256B8ED70080FFD3 /* CoreDataManager.swift */,
+			);
+			path = Singletons;
+			sourceTree = "<group>";
+		};
+		76084EB3256B951E0080FFD3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				76274606247250460002D7A8 /* Weekly_Workouts.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		762745F1247250460002D7A8 = {
 			isa = PBXGroup;
 			children = (
@@ -128,11 +154,13 @@
 		762745FC247250460002D7A8 /* WeeklyWorkouts */ = {
 			isa = PBXGroup;
 			children = (
+				76084EB3256B951E0080FFD3 /* CoreData */,
+				76084EA9256B8EC90080FFD3 /* Singletons */,
 				762745FD247250460002D7A8 /* AppDelegate.swift */,
 				762745FF247250460002D7A8 /* SceneDelegate.swift */,
 				76274601247250460002D7A8 /* WeeklyWorkoutOverview.swift */,
 				76350317247259020091211C /* WorkoutCell.swift */,
-				766000FA24725A3D0069B740 /* Workout.swift */,
+				766000FA24725A3D0069B740 /* WorkoutCached.swift */,
 				76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */,
 				761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */,
 				76274603247250460002D7A8 /* Main.storyboard */,
@@ -140,8 +168,7 @@
 				7627460B247250480002D7A8 /* LaunchScreen.storyboard */,
 				7627460E247250480002D7A8 /* Info.plist */,
 				7629C17B253EB4E8003B71E1 /* GoogleService-Info.plist */,
-				76274606247250460002D7A8 /* Weekly_Workouts.xcdatamodeld */,
-				76C58DB624A9B96B001AB553 /* Extensions.swift */,
+				76084E71256B87AB0080FFD3 /* Utility */,
 			);
 			path = WeeklyWorkouts;
 			sourceTree = "<group>";
@@ -356,7 +383,8 @@
 				761CC8E224B41DA2005F8F9F /* WorkoutDetailVC.swift in Sources */,
 				76274608247250460002D7A8 /* Weekly_Workouts.xcdatamodeld in Sources */,
 				76274600247250460002D7A8 /* SceneDelegate.swift in Sources */,
-				766000FB24725A3D0069B740 /* Workout.swift in Sources */,
+				766000FB24725A3D0069B740 /* WorkoutCached.swift in Sources */,
+				76084EAB256B8ED70080FFD3 /* CoreDataManager.swift in Sources */,
 				76C58DB524A95C70001AB553 /* AddWorkoutVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

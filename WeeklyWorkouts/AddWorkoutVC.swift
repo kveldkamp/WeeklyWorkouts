@@ -46,38 +46,8 @@ class AddWorkoutVC: UIViewController {
     
     @IBAction func saveWorkout(_ sender: Any) {
         guard let shortDescription = shortDescription.text, let longDescription = longDescription.text else {return}
-        
         let newWorkout = WorkoutCached(shortDescription: shortDescription, longDescription: longDescription , completed: false)
-         guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                return
-              }
-              
-            testOutFireBaseStorage()
-        
-              // 1
-              let managedContext =
-                appDelegate.persistentContainer.viewContext
-              
-              // 2
-              let entity =
-                NSEntityDescription.entity(forEntityName: "Workout", in: managedContext)!
-              let workout = NSManagedObject(entity: entity, insertInto: managedContext)
-              
-              // 3
-              workout.setValue(newWorkout.shortDescription , forKeyPath: "shortSummary")
-              workout.setValue(newWorkout.longDescription, forKeyPath: "longSummary")
-              workout.setValue(newWorkout.completed, forKeyPath: "completed")
-              
-              // 4
-              do {
-                try managedContext.save()
-                NotificationCenter.default.post(name: NSNotification.Name.CoreData.WorkoutAdded, object: nil)
-                self.dismiss(animated: true, completion: nil)
-              } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-              }
-        
+        saveToFireBase(newWorkout: newWorkout)
     }
     
     
@@ -85,18 +55,24 @@ class AddWorkoutVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func testOutFireBaseStorage(){
+    func saveToFireBase(newWorkout: WorkoutCached){
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
+        let shortSummary = newWorkout.shortDescription
+        let longSummary = newWorkout.longDescription
         ref = db.collection("workout").addDocument(data: [
-            "shortSummary": "Run",
-            "longSummary": "Complete a run over 2 miles",
-            "completed" : false
+            "shortSummary": shortSummary,
+            "longSummary": longSummary,
+            "completed" : false,
+            "dateAdded" : Date().toString()
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added with ID: \(ref!.documentID)")
+                newWorkout.firebaseId = ref!.documentID
+                CoreDataManager.sharedInstance.createAndSaveWorkout(newWorkout: newWorkout)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }

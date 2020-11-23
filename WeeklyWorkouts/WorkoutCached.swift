@@ -12,6 +12,7 @@ class WorkoutCached{
     var shortDescription: String
     var longDescription: String
     var completed: Bool
+    var firebaseId: String?
     
     init(shortDescription: String, longDescription: String, completed: Bool) {
         self.shortDescription = shortDescription
