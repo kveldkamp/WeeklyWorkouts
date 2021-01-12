@@ -113,17 +113,10 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		76084EA9256B8EC90080FFD3 /* Singletons */ = {
-			isa = PBXGroup;
-			children = (
-				76084EAA256B8ED70080FFD3 /* CoreDataManager.swift */,
-			);
-			path = Singletons;
-			sourceTree = "<group>";
-		};
 		76084EB3256B951E0080FFD3 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				76084EAA256B8ED70080FFD3 /* CoreDataManager.swift */,
 				76274606247250460002D7A8 /* Weekly_Workouts.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -154,13 +147,12 @@
 		762745FC247250460002D7A8 /* WeeklyWorkouts */ = {
 			isa = PBXGroup;
 			children = (
+				76B52EF525AD64CE00E77D17 /* Models */,
 				76084EB3256B951E0080FFD3 /* CoreData */,
-				76084EA9256B8EC90080FFD3 /* Singletons */,
 				762745FD247250460002D7A8 /* AppDelegate.swift */,
 				762745FF247250460002D7A8 /* SceneDelegate.swift */,
 				76274601247250460002D7A8 /* WeeklyWorkoutOverview.swift */,
 				76350317247259020091211C /* WorkoutCell.swift */,
-				766000FA24725A3D0069B740 /* WorkoutCached.swift */,
 				76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */,
 				761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */,
 				76274603247250460002D7A8 /* Main.storyboard */,
@@ -189,6 +181,14 @@
 				76274624247250490002D7A8 /* Info.plist */,
 			);
 			path = WeeklyWorkoutsUITests;
+			sourceTree = "<group>";
+		};
+		76B52EF525AD64CE00E77D17 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				766000FA24725A3D0069B740 /* WorkoutCached.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9124123E1C025EFBA6BCC1FC /* Pods */ = {

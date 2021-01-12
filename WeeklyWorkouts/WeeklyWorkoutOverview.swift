@@ -26,50 +26,59 @@ class WeeklyWorkoutOverview: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(workoutDataUpdated), name: NSNotification.Name.CoreData.WorkoutAdded, object: nil)
     }
     
-    func checkForWorkoutReset(){
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        guard UserDefaults.standard.string(forKey: "LastTimeUsed") != nil else {
-            let now = df.string(from: Date())
-            UserDefaults.standard.set(now, forKey: "LastTimeUsed")
-            return
-        }
-        
-        let lastTimeUsed = UserDefaults.standard.string(forKey: "LastTimeUsed")
-        if let lastTimeUsed = lastTimeUsed{
-            if let lastTimeUsedDate = df.date(from: lastTimeUsed){
-                let now = Date()
-                
-                //TODO: add unit tests
-                let lastUsedWeek = lastTimeUsedDate.get(.weekOfYear)
-                let thisWeek = now.get(.weekOfYear)
-                
-                let weeksElapsed = thisWeek - lastUsedWeek
-                switch weeksElapsed{
-                case 1:
-                    // if only 1 week elapsed and new date is sunday, can ignore until monday
-                    // I want this to reset on sunday nights, but saturday and sunday are technically 'different' weeks
-                    if now.get(.weekday) != 1{
-                        resetWorkouts()
-                    }
-                case 0:
-                    // if comparing sunday to same "week", need to reset
-                    if lastTimeUsedDate.get(.weekday) == 1{
-                        resetWorkouts()
-                    }
-                default:
-                    resetWorkouts()
-                }
-            }
-        }
-        let now = df.string(from: Date())
-        UserDefaults.standard.set(now, forKey: "LastTimeUsed")
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkForWorkoutReset()
+    }
+    
+    func checkForWorkoutReset(){
+        var thisWeek: Int
+        var now = Date()
+        
+        //TODO: make this data into a unit test
+        /*var dateComponents = DateComponents()
+        dateComponents.year = 2022
+        dateComponents.month = 1
+        dateComponents.day = 3
+        dateComponents.timeZone = TimeZone(abbreviation: "PST") // Japan Standard Time
+        dateComponents.hour = 8
+        dateComponents.minute = 34
+        // Create date from components
+        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
+        let fakeDate = userCalendar.date(from: dateComponents)
+        if let fakeDate = fakeDate{
+            now = fakeDate
+        }
+         */
+        
+        // get week and normalize for sunday
+        thisWeek = getNormalizedWeekOfYear(now: now)
+        
+        guard let lastWeekUsed = UserDefaults.standard.object(forKey: "weekInt") as? Int else{
+            UserDefaults.standard.set(thisWeek, forKey: "weekInt")
+            return
+        }
+        
+        if lastWeekUsed != thisWeek{
+            resetWorkouts()
+            UserDefaults.standard.set(thisWeek, forKey: "weekInt")
+        }
+    }
+    
+    // make sunday part of the previous week, it's the weekend baby
+    func getNormalizedWeekOfYear(now: Date) -> Int{
+        if now.get(.weekday) == 1{
+            if now.get(.weekOfYear) == 1 {
+                return 52
+            }
+            else{
+                return now.get(.weekOfYear) - 1
+            }
+            
+        }
+        else{
+            return now.get(.weekOfYear)
+        }
     }
     
     @objc func workoutDataUpdated(){
