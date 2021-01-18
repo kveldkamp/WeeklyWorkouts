@@ -17,23 +17,16 @@ class AddWorkoutVC: UIViewController {
     
     @IBOutlet weak var shortDescription: UITextField!
     @IBOutlet weak var longDescription: UITextView!
-    
+    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var saveWorkoutButton: UIButton!
     
+    var pickerData = [String]()
     var db: Firestore!
     
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = false
-        longDescription.layer.borderColor = UIColor.lightGray.cgColor
-        longDescription.layer.borderWidth = 1
-        longDescription.layer.cornerRadius = 5
-        longDescription.delegate = self
-        shortDescription.layer.borderWidth = 0
-        shortDescription.delegate = self
-        saveWorkoutButton.layer.cornerRadius = 5
-        
-        
+        buildUI()
         //FireStore setup
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
@@ -42,12 +35,32 @@ class AddWorkoutVC: UIViewController {
     }
     
     
+    func buildUI(){
+        longDescription.layer.borderColor = UIColor.lightGray.cgColor
+        longDescription.layer.borderWidth = 1
+        longDescription.layer.cornerRadius = 5
+        longDescription.delegate = self
+        shortDescription.layer.borderWidth = 0
+        shortDescription.delegate = self
+        saveWorkoutButton.layer.cornerRadius = 5
+        populatePickerView()
+    }
+    
+    func populatePickerView(){
+        pickerData = ["1x a week", "2x a week", "3x a week", "4x a week", "5x a week", "6x a week", "7x a week"]
+        pickerView.delegate = self
+        pickerView.dataSource = self
+    }
     
     
     @IBAction func saveWorkout(_ sender: Any) {
         guard let shortDescription = shortDescription.text, let longDescription = longDescription.text else {return}
         let newWorkout = WorkoutCached(shortDescription: shortDescription, longDescription: longDescription , completed: false)
-        saveToFireBase(newWorkout: newWorkout)
+        let timesPerWeek = (pickerView.selectedRow(inComponent: 0) + 1) //account for zero indexing
+        
+        for _ in 1...timesPerWeek{
+            saveToFireBase(newWorkout: newWorkout)
+        }
     }
     
     
@@ -79,7 +92,7 @@ class AddWorkoutVC: UIViewController {
     
 }
 
-//MARK: UITextFieldDelegate
+//MARK: - UITextFieldDelegate
 extension AddWorkoutVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -87,7 +100,7 @@ extension AddWorkoutVC: UITextFieldDelegate{
     }
 }
 
-//MARK: UITextViewDelegate
+//MARK: - UITextViewDelegate
 extension AddWorkoutVC: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         let placeHolder = "Enter a longer description here (optional)"
@@ -104,4 +117,25 @@ extension AddWorkoutVC: UITextViewDelegate{
         }
         return true
     }
+}
+
+
+//MARK: - UIPickerView Delegate and DataSource
+extension AddWorkoutVC: UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+}
+
+extension AddWorkoutVC: UIPickerViewDelegate{
+    
 }

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="27B-si-fN0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="27B-si-fN0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Weekly Workouts-->
         <scene sceneID="4ie-5r-hVF">
             <objects>
-                <tableViewController title="Weekly Workouts" id="7bc-5e-7ZP" customClass="WeeklyWorkoutOverview" customModule="Weekly_Workouts" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Weekly Workouts" id="7bc-5e-7ZP" customClass="WeeklyWorkoutOverview" customModule="WeeklyWorkouts" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="azg-X1-yrn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutCell" rowHeight="75" id="66f-Qp-x0z" customClass="WorkoutCell" customModule="Weekly_Workouts" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutCell" rowHeight="75" id="66f-Qp-x0z" customClass="WorkoutCell" customModule="WeeklyWorkouts" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="66f-Qp-x0z" id="itU-2W-vmF">
@@ -57,7 +59,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Weekly Workouts" id="fwt-2a-5uh">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="0bA-BQ-I1b">
-                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
                                 <segue destination="G1y-3Y-KzT" kind="presentation" id="c2z-Sa-U1V"/>
                             </connections>
@@ -75,7 +77,7 @@
         <!--Workout DetailVC-->
         <scene sceneID="ZX6-MC-7AI">
             <objects>
-                <viewController storyboardIdentifier="WorkoutDetail" id="kXF-Km-hk9" customClass="WorkoutDetailVC" customModule="Weekly_Workouts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkoutDetail" id="kXF-Km-hk9" customClass="WorkoutDetailVC" customModule="WeeklyWorkouts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Obf-W0-n83">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,14 +90,15 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="42K-k2-rDy">
                                 <rect key="frame" x="20" y="165.5" width="374" height="448"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rbf-UL-yoQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eAX-IZ-igv" firstAttribute="leading" secondItem="rbf-UL-yoQ" secondAttribute="leading" constant="20" id="1h3-2Y-KdQ"/>
                             <constraint firstItem="42K-k2-rDy" firstAttribute="height" secondItem="Obf-W0-n83" secondAttribute="height" multiplier="0.5" id="2wR-sp-N1X"/>
@@ -105,7 +108,6 @@
                             <constraint firstItem="42K-k2-rDy" firstAttribute="top" secondItem="eAX-IZ-igv" secondAttribute="bottom" constant="40" id="qTu-eD-1v8"/>
                             <constraint firstItem="rbf-UL-yoQ" firstAttribute="trailing" secondItem="eAX-IZ-igv" secondAttribute="trailing" constant="20" id="yBW-Se-CvY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rbf-UL-yoQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="61F-0g-r6q"/>
                     <connections>
@@ -120,37 +122,46 @@
         <!--Add a Workout-->
         <scene sceneID="hnf-dR-OWM">
             <objects>
-                <viewController title="Add a Workout" id="geN-de-vmw" customClass="AddWorkoutVC" customModule="Weekly_Workouts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add a Workout" id="geN-de-vmw" customClass="AddWorkoutVC" customModule="WeeklyWorkouts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dRC-lA-UBM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter workout name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMJ-7b-nYw">
-                                <rect key="frame" x="25" y="106" width="364" height="69.5"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Enter a longer description here (optional)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C4q-n4-MEb">
-                                <rect key="frame" x="25" y="212.5" width="352" height="278"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9i-mV-MNO">
                                 <rect key="frame" x="25" y="84" width="96" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27Y-u7-tlm">
-                                <rect key="frame" x="25" y="180.5" width="110" height="17"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter workout name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMJ-7b-nYw">
+                                <rect key="frame" x="25" y="106" width="364" height="52.5"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27Y-u7-tlm" userLabel="Long Description Label">
+                                <rect key="frame" x="25" y="163.5" width="110" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibI-BZ-sz7">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Enter a longer description here (optional)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C4q-n4-MEb">
+                                <rect key="frame" x="25" y="195.5" width="352" height="210.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpq-er-jvj">
+                                <rect key="frame" x="25" y="411" width="110" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2z-ZB-UTp">
+                                <rect key="frame" x="0.0" y="433" width="414" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibI-BZ-sz7">
                                 <rect key="frame" x="25" y="705" width="364" height="63"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -162,11 +173,14 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="n4L-uo-smc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="C4q-n4-MEb" firstAttribute="height" secondItem="dRC-lA-UBM" secondAttribute="height" multiplier="0.33" id="1ic-yr-RM8"/>
+                            <constraint firstItem="C4q-n4-MEb" firstAttribute="height" secondItem="dRC-lA-UBM" secondAttribute="height" multiplier="0.25" id="1ic-yr-RM8"/>
+                            <constraint firstItem="V2z-ZB-UTp" firstAttribute="trailing" secondItem="n4L-uo-smc" secondAttribute="trailing" id="5pw-HT-8IV"/>
                             <constraint firstItem="C4q-n4-MEb" firstAttribute="leading" secondItem="uMJ-7b-nYw" secondAttribute="leading" id="5uf-5T-e05"/>
                             <constraint firstItem="A9i-mV-MNO" firstAttribute="leading" secondItem="uMJ-7b-nYw" secondAttribute="leading" id="FZe-Nz-y1y"/>
+                            <constraint firstItem="V2z-ZB-UTp" firstAttribute="top" secondItem="zpq-er-jvj" secondAttribute="bottom" constant="5" id="Inp-wf-dmq"/>
                             <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="27Y-u7-tlm" secondAttribute="trailing" symbolic="YES" id="JwH-AL-4g1"/>
                             <constraint firstItem="uMJ-7b-nYw" firstAttribute="top" secondItem="A9i-mV-MNO" secondAttribute="bottom" constant="5" id="Km5-0B-1EU"/>
                             <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" secondItem="ibI-BZ-sz7" secondAttribute="trailing" constant="25" id="LQ5-iz-DAg"/>
@@ -176,18 +190,21 @@
                             <constraint firstItem="27Y-u7-tlm" firstAttribute="leading" secondItem="C4q-n4-MEb" secondAttribute="leading" id="Vnv-S8-27z"/>
                             <constraint firstItem="uMJ-7b-nYw" firstAttribute="height" secondItem="C4q-n4-MEb" secondAttribute="height" multiplier="0.25" id="ZbU-tW-xv3"/>
                             <constraint firstItem="ibI-BZ-sz7" firstAttribute="leading" secondItem="n4L-uo-smc" secondAttribute="leading" constant="25" id="hZD-14-bD9"/>
+                            <constraint firstItem="zpq-er-jvj" firstAttribute="top" secondItem="C4q-n4-MEb" secondAttribute="bottom" constant="5" id="iei-1m-FgI"/>
+                            <constraint firstItem="V2z-ZB-UTp" firstAttribute="leading" secondItem="n4L-uo-smc" secondAttribute="leading" id="k7M-a5-6WR"/>
                             <constraint firstItem="27Y-u7-tlm" firstAttribute="top" secondItem="uMJ-7b-nYw" secondAttribute="bottom" constant="5" id="mdf-69-asc"/>
+                            <constraint firstItem="zpq-er-jvj" firstAttribute="trailing" secondItem="27Y-u7-tlm" secondAttribute="trailing" id="nEb-8h-Ugy"/>
                             <constraint firstItem="uMJ-7b-nYw" firstAttribute="top" secondItem="n4L-uo-smc" secondAttribute="top" constant="50" id="na8-gq-Cwe"/>
                             <constraint firstItem="ibI-BZ-sz7" firstAttribute="height" secondItem="dRC-lA-UBM" secondAttribute="height" multiplier="0.075" id="odf-CX-cBR"/>
                             <constraint firstItem="C4q-n4-MEb" firstAttribute="width" secondItem="uMJ-7b-nYw" secondAttribute="width" multiplier="0.967033" id="rtW-oA-htv"/>
                             <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A9i-mV-MNO" secondAttribute="trailing" symbolic="YES" id="szm-rL-9Ya"/>
+                            <constraint firstItem="zpq-er-jvj" firstAttribute="leading" secondItem="uMJ-7b-nYw" secondAttribute="leading" id="w3j-Qh-zkv"/>
                             <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" secondItem="uMJ-7b-nYw" secondAttribute="trailing" constant="25" id="xep-8a-mUH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="n4L-uo-smc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add a Workout" id="8h4-Pu-iIF">
                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="Uk5-xl-5ON">
-                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
                                 <action selector="dismissView:" destination="geN-de-vmw" id="iRL-ON-6ld"/>
                             </connections>
@@ -196,6 +213,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="longDescription" destination="C4q-n4-MEb" id="b1t-77-AXq"/>
+                        <outlet property="pickerView" destination="V2z-ZB-UTp" id="wem-8T-gHJ"/>
                         <outlet property="saveWorkoutButton" destination="ibI-BZ-sz7" id="VCJ-eI-n42"/>
                         <outlet property="shortDescription" destination="uMJ-7b-nYw" id="ADw-S2-KFj"/>
                     </connections>
@@ -242,5 +260,14 @@
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
