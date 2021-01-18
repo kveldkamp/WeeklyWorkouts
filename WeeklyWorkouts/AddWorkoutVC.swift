@@ -27,6 +27,8 @@ class AddWorkoutVC: UIViewController {
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = false
         buildUI()
+        linkUpKeyboardDismissal()
+        setupTextFields()
         //FireStore setup
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
@@ -50,6 +52,30 @@ class AddWorkoutVC: UIViewController {
         pickerData = ["1x a week", "2x a week", "3x a week", "4x a week", "5x a week", "6x a week", "7x a week"]
         pickerView.delegate = self
         pickerView.dataSource = self
+    }
+    
+    
+    func setupTextFields() {
+        let toolbar = UIToolbar()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                        target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done,
+                                         target: self, action: #selector(doneButtonTapped))
+        
+        toolbar.setItems([flexSpace, doneButton], animated: true)
+        toolbar.sizeToFit()
+        
+        longDescription.inputAccessoryView = toolbar
+
+    }
+    
+    @objc func doneButtonTapped() {
+        view.endEditing(true)
+    }
+    
+    func linkUpKeyboardDismissal(){
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        self.view.addGestureRecognizer(tap)
     }
     
     
@@ -108,14 +134,6 @@ extension AddWorkoutVC: UITextViewDelegate{
             textView.text = ""
             textView.textColor = UIColor.black
         }
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
     }
 }
 
