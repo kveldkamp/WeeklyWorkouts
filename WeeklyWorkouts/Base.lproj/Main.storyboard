@@ -128,8 +128,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9i-mV-MNO">
-                                <rect key="frame" x="25" y="84" width="96" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="25" y="81.5" width="110.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -140,21 +140,21 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27Y-u7-tlm" userLabel="Long Description Label">
-                                <rect key="frame" x="25" y="163.5" width="110" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="25" y="163.5" width="126.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Enter a longer description here (optional)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C4q-n4-MEb">
-                                <rect key="frame" x="25" y="195.5" width="352" height="210.5"/>
+                                <rect key="frame" x="25" y="198" width="352" height="210.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" smartInsertDeleteType="no"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpq-er-jvj">
-                                <rect key="frame" x="25" y="411" width="110" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="25" y="413.5" width="126.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.40000000000000002" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -180,7 +180,7 @@
                             <constraint firstItem="V2z-ZB-UTp" firstAttribute="trailing" secondItem="n4L-uo-smc" secondAttribute="trailing" id="5pw-HT-8IV"/>
                             <constraint firstItem="C4q-n4-MEb" firstAttribute="leading" secondItem="uMJ-7b-nYw" secondAttribute="leading" id="5uf-5T-e05"/>
                             <constraint firstItem="A9i-mV-MNO" firstAttribute="leading" secondItem="uMJ-7b-nYw" secondAttribute="leading" id="FZe-Nz-y1y"/>
-                            <constraint firstItem="V2z-ZB-UTp" firstAttribute="top" secondItem="zpq-er-jvj" secondAttribute="bottom" constant="5" id="Inp-wf-dmq"/>
+                            <constraint firstItem="V2z-ZB-UTp" firstAttribute="top" secondItem="zpq-er-jvj" secondAttribute="bottom" id="Inp-wf-dmq"/>
                             <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="27Y-u7-tlm" secondAttribute="trailing" symbolic="YES" id="JwH-AL-4g1"/>
                             <constraint firstItem="uMJ-7b-nYw" firstAttribute="top" secondItem="A9i-mV-MNO" secondAttribute="bottom" constant="5" id="Km5-0B-1EU"/>
                             <constraint firstItem="n4L-uo-smc" firstAttribute="trailing" secondItem="ibI-BZ-sz7" secondAttribute="trailing" constant="25" id="LQ5-iz-DAg"/>
