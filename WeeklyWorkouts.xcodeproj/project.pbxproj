@@ -16,8 +16,8 @@
 		76274608247250460002D7A8 /* Weekly_Workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76274606247250460002D7A8 /* Weekly_Workouts.xcdatamodeld */; };
 		7627460A247250480002D7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76274609247250480002D7A8 /* Assets.xcassets */; };
 		7627460D247250480002D7A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7627460B247250480002D7A8 /* LaunchScreen.storyboard */; };
-		76274618247250490002D7A8 /* Weekly_WorkoutsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76274617247250490002D7A8 /* Weekly_WorkoutsTests.swift */; };
-		76274623247250490002D7A8 /* Weekly_WorkoutsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76274622247250490002D7A8 /* Weekly_WorkoutsUITests.swift */; };
+		76274618247250490002D7A8 /* WeeklyWorkoutsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76274617247250490002D7A8 /* WeeklyWorkoutsTests.swift */; };
+		76274623247250490002D7A8 /* WeeklyWorkoutsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76274622247250490002D7A8 /* WeeklyWorkoutsUITests.swift */; };
 		7629C17C253EB4E8003B71E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7629C17B253EB4E8003B71E1 /* GoogleService-Info.plist */; };
 		76350318247259020091211C /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76350317247259020091211C /* WorkoutCell.swift */; };
 		766000FB24725A3D0069B740 /* WorkoutCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766000FA24725A3D0069B740 /* WorkoutCached.swift */; };
@@ -57,11 +57,11 @@
 		76274609247250480002D7A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7627460C247250480002D7A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7627460E247250480002D7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76274613247250490002D7A8 /* Weekly WorkoutsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weekly WorkoutsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76274617247250490002D7A8 /* Weekly_WorkoutsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekly_WorkoutsTests.swift; sourceTree = "<group>"; };
+		76274613247250490002D7A8 /* WeeklyWorkoutsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeeklyWorkoutsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76274617247250490002D7A8 /* WeeklyWorkoutsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWorkoutsTests.swift; sourceTree = "<group>"; };
 		76274619247250490002D7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7627461E247250490002D7A8 /* Weekly WorkoutsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weekly WorkoutsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76274622247250490002D7A8 /* Weekly_WorkoutsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekly_WorkoutsUITests.swift; sourceTree = "<group>"; };
+		7627461E247250490002D7A8 /* WeeklyWorkoutsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeeklyWorkoutsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76274622247250490002D7A8 /* WeeklyWorkoutsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWorkoutsUITests.swift; sourceTree = "<group>"; };
 		76274624247250490002D7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7629C17B253EB4E8003B71E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76350317247259020091211C /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				762745FA247250460002D7A8 /* WeeklyWorkouts.app */,
-				76274613247250490002D7A8 /* Weekly WorkoutsTests.xctest */,
-				7627461E247250490002D7A8 /* Weekly WorkoutsUITests.xctest */,
+				76274613247250490002D7A8 /* WeeklyWorkoutsTests.xctest */,
+				7627461E247250490002D7A8 /* WeeklyWorkoutsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 		76274616247250490002D7A8 /* WeeklyWorkoutsTests */ = {
 			isa = PBXGroup;
 			children = (
-				76274617247250490002D7A8 /* Weekly_WorkoutsTests.swift */,
+				76274617247250490002D7A8 /* WeeklyWorkoutsTests.swift */,
 				76274619247250490002D7A8 /* Info.plist */,
 			);
 			path = WeeklyWorkoutsTests;
@@ -177,7 +177,7 @@
 		76274621247250490002D7A8 /* WeeklyWorkoutsUITests */ = {
 			isa = PBXGroup;
 			children = (
-				76274622247250490002D7A8 /* Weekly_WorkoutsUITests.swift */,
+				76274622247250490002D7A8 /* WeeklyWorkoutsUITests.swift */,
 				76274624247250490002D7A8 /* Info.plist */,
 			);
 			path = WeeklyWorkoutsUITests;
@@ -222,9 +222,9 @@
 			productReference = 762745FA247250460002D7A8 /* WeeklyWorkouts.app */;
 			productType = "com.apple.product-type.application";
 		};
-		76274612247250490002D7A8 /* Weekly WorkoutsTests */ = {
+		76274612247250490002D7A8 /* WeeklyWorkoutsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7627462A247250490002D7A8 /* Build configuration list for PBXNativeTarget "Weekly WorkoutsTests" */;
+			buildConfigurationList = 7627462A247250490002D7A8 /* Build configuration list for PBXNativeTarget "WeeklyWorkoutsTests" */;
 			buildPhases = (
 				7627460F247250490002D7A8 /* Sources */,
 				76274610247250490002D7A8 /* Frameworks */,
@@ -235,14 +235,14 @@
 			dependencies = (
 				76274615247250490002D7A8 /* PBXTargetDependency */,
 			);
-			name = "Weekly WorkoutsTests";
+			name = WeeklyWorkoutsTests;
 			productName = "Weekly WorkoutsTests";
-			productReference = 76274613247250490002D7A8 /* Weekly WorkoutsTests.xctest */;
+			productReference = 76274613247250490002D7A8 /* WeeklyWorkoutsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7627461D247250490002D7A8 /* Weekly WorkoutsUITests */ = {
+		7627461D247250490002D7A8 /* WeeklyWorkoutsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7627462D247250490002D7A8 /* Build configuration list for PBXNativeTarget "Weekly WorkoutsUITests" */;
+			buildConfigurationList = 7627462D247250490002D7A8 /* Build configuration list for PBXNativeTarget "WeeklyWorkoutsUITests" */;
 			buildPhases = (
 				7627461A247250490002D7A8 /* Sources */,
 				7627461B247250490002D7A8 /* Frameworks */,
@@ -253,9 +253,9 @@
 			dependencies = (
 				76274620247250490002D7A8 /* PBXTargetDependency */,
 			);
-			name = "Weekly WorkoutsUITests";
+			name = WeeklyWorkoutsUITests;
 			productName = "Weekly WorkoutsUITests";
-			productReference = 7627461E247250490002D7A8 /* Weekly WorkoutsUITests.xctest */;
+			productReference = 7627461E247250490002D7A8 /* WeeklyWorkoutsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -295,8 +295,8 @@
 			projectRoot = "";
 			targets = (
 				762745F9247250460002D7A8 /* WeeklyWorkouts */,
-				76274612247250490002D7A8 /* Weekly WorkoutsTests */,
-				7627461D247250490002D7A8 /* Weekly WorkoutsUITests */,
+				76274612247250490002D7A8 /* WeeklyWorkoutsTests */,
+				7627461D247250490002D7A8 /* WeeklyWorkoutsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -393,7 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76274618247250490002D7A8 /* Weekly_WorkoutsTests.swift in Sources */,
+				76274618247250490002D7A8 /* WeeklyWorkoutsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76274623247250490002D7A8 /* Weekly_WorkoutsUITests.swift in Sources */,
+				76274623247250490002D7A8 /* WeeklyWorkoutsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,11 +614,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kveldkamp.weeklyworkouts.Weekly-WorkoutsTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kveldkamp.weeklyworkouts.WeeklyWorkoutsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weekly Workouts.app/Weekly Workouts";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeeklyWorkouts.app/WeeklyWorkouts";
 			};
 			name = Debug;
 		};
@@ -636,11 +636,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kveldkamp.weeklyworkouts.Weekly-WorkoutsTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kveldkamp.weeklyworkouts.WeeklyWorkoutsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weekly Workouts.app/Weekly Workouts";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeeklyWorkouts.app/WeeklyWorkouts";
 			};
 			name = Release;
 		};
@@ -650,13 +650,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
-				INFOPLIST_FILE = "Weekly WorkoutsUITests/Info.plist";
+				INFOPLIST_FILE = WeeklyWorkoutsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kveldkamp.weeklyworkouts.Weekly-WorkoutsUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kveldkamp.weeklyworkouts.WeeklyWorkoutsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -670,13 +670,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
-				INFOPLIST_FILE = "Weekly WorkoutsUITests/Info.plist";
+				INFOPLIST_FILE = WeeklyWorkoutsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kveldkamp.weeklyworkouts.Weekly-WorkoutsUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kveldkamp.weeklyworkouts.WeeklyWorkoutsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -705,7 +705,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7627462A247250490002D7A8 /* Build configuration list for PBXNativeTarget "Weekly WorkoutsTests" */ = {
+		7627462A247250490002D7A8 /* Build configuration list for PBXNativeTarget "WeeklyWorkoutsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7627462B247250490002D7A8 /* Debug */,
@@ -714,7 +714,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7627462D247250490002D7A8 /* Build configuration list for PBXNativeTarget "Weekly WorkoutsUITests" */ = {
+		7627462D247250490002D7A8 /* Build configuration list for PBXNativeTarget "WeeklyWorkoutsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7627462E247250490002D7A8 /* Debug */,

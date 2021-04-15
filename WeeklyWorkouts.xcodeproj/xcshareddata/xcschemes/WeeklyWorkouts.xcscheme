@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "76274612247250490002D7A8"
-               BuildableName = "Weekly WorkoutsTests.xctest"
-               BlueprintName = "Weekly WorkoutsTests"
+               BuildableName = "WeeklyWorkoutsTests.xctest"
+               BlueprintName = "WeeklyWorkoutsTests"
                ReferencedContainer = "container:WeeklyWorkouts.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7627461D247250490002D7A8"
-               BuildableName = "Weekly WorkoutsUITests.xctest"
-               BlueprintName = "Weekly WorkoutsUITests"
+               BuildableName = "WeeklyWorkoutsUITests.xctest"
+               BlueprintName = "WeeklyWorkoutsUITests"
                ReferencedContainer = "container:WeeklyWorkouts.xcodeproj">
             </BuildableReference>
          </TestableReference>

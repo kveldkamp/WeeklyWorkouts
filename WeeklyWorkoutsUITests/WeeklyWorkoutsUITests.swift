@@ -1,5 +1,5 @@
 //
-//  Weekly_WorkoutsUITests.swift
+//  WeeklyWorkoutsUITests.swift
 //  Weekly WorkoutsUITests
 //
 //  Created by Kevin Veldkamp on 5/17/20.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Weekly_WorkoutsUITests: XCTestCase {
+class WeeklyWorkoutsUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
