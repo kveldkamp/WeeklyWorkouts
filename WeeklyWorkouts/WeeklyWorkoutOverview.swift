@@ -12,6 +12,7 @@ import CoreData
 class WeeklyWorkoutOverview: UITableViewController {
     
     var weeklyWorkouts = [NSManagedObject]()
+    var resetChecker = WorkoutResetChecker()
     
     @IBOutlet weak var addWorkoutButton: UIBarButtonItem!
     
@@ -31,37 +32,10 @@ class WeeklyWorkoutOverview: UITableViewController {
         checkForWorkoutReset()
     }
     
+    // checks for weekly reset routine
     func checkForWorkoutReset(){
-        var thisWeek: Int
-        var now = Date()
-        
-        //TODO: make this data into a unit test
-        /*var dateComponents = DateComponents()
-        dateComponents.year = 2022
-        dateComponents.month = 1
-        dateComponents.day = 3
-        dateComponents.timeZone = TimeZone(abbreviation: "PST") // Japan Standard Time
-        dateComponents.hour = 8
-        dateComponents.minute = 34
-        // Create date from components
-        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
-        let fakeDate = userCalendar.date(from: dateComponents)
-        if let fakeDate = fakeDate{
-            now = fakeDate
-        }
-         */
-        
-        // get week and normalize for sunday
-        thisWeek = getNormalizedWeekOfYear(now: now)
-        
-        guard let lastWeekUsed = UserDefaults.standard.object(forKey: "weekInt") as? Int else{
-            UserDefaults.standard.set(thisWeek, forKey: "weekInt")
-            return
-        }
-        
-        if lastWeekUsed != thisWeek{
+        if resetChecker.checkForWorkoutReset(now: Date()) == .resetNeeded {
             resetWorkouts()
-            UserDefaults.standard.set(thisWeek, forKey: "weekInt")
         }
     }
     
@@ -80,6 +54,9 @@ class WeeklyWorkoutOverview: UITableViewController {
             return now.get(.weekOfYear)
         }
     }
+    
+
+    
     
     @objc func workoutDataUpdated(){
         loadWorkouts()
