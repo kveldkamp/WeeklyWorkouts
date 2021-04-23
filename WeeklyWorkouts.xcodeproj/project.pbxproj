@@ -10,8 +10,6 @@
 		76084EAB256B8ED70080FFD3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76084EAA256B8ED70080FFD3 /* CoreDataManager.swift */; };
 		761CC8E224B41DA2005F8F9F /* WorkoutDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */; };
 		761FE3BC2632FD0E00EA256D /* WorkoutResetChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FE3BB2632FD0E00EA256D /* WorkoutResetChecker.swift */; };
-		761FE3BD2632FD0E00EA256D /* WorkoutResetChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FE3BB2632FD0E00EA256D /* WorkoutResetChecker.swift */; };
-		761FE3BE2632FD0E00EA256D /* WorkoutResetChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FE3BB2632FD0E00EA256D /* WorkoutResetChecker.swift */; };
 		762745FE247250460002D7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762745FD247250460002D7A8 /* AppDelegate.swift */; };
 		76274600247250460002D7A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762745FF247250460002D7A8 /* SceneDelegate.swift */; };
 		76274602247250460002D7A8 /* WeeklyWorkoutOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76274601247250460002D7A8 /* WeeklyWorkoutOverview.swift */; };
@@ -27,6 +25,7 @@
 		76C58DB524A95C70001AB553 /* AddWorkoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */; };
 		76C58DB724A9B96B001AB553 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C58DB624A9B96B001AB553 /* Extensions.swift */; };
 		8F1B1D5557460F326D5AD967 /* Pods_WeeklyWorkouts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C222EB3C7A58D8C004F2A67 /* Pods_WeeklyWorkouts.framework */; };
+		A345261E5D7F03FDFCEEE6FE /* Pods_WeeklyWorkoutsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B724755224C67A2434A3402E /* Pods_WeeklyWorkoutsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +72,9 @@
 		76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutVC.swift; sourceTree = "<group>"; };
 		76C58DB624A9B96B001AB553 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9C222EB3C7A58D8C004F2A67 /* Pods_WeeklyWorkouts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeeklyWorkouts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B724755224C67A2434A3402E /* Pods_WeeklyWorkoutsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeeklyWorkoutsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDFAF5E1F8AE3BF0C0109273 /* Pods-WeeklyWorkoutsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeklyWorkoutsTests.debug.xcconfig"; path = "Target Support Files/Pods-WeeklyWorkoutsTests/Pods-WeeklyWorkoutsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DE94A033DF28274EA242AD05 /* Pods-WeeklyWorkoutsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeklyWorkoutsTests.release.xcconfig"; path = "Target Support Files/Pods-WeeklyWorkoutsTests/Pods-WeeklyWorkoutsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A345261E5D7F03FDFCEEE6FE /* Pods_WeeklyWorkoutsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9C222EB3C7A58D8C004F2A67 /* Pods_WeeklyWorkouts.framework */,
+				B724755224C67A2434A3402E /* Pods_WeeklyWorkoutsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,6 +205,8 @@
 			children = (
 				4F377CDB18948F7E968407B8 /* Pods-WeeklyWorkouts.debug.xcconfig */,
 				20CA3D2F046E28DFA0845EC7 /* Pods-WeeklyWorkouts.release.xcconfig */,
+				CDFAF5E1F8AE3BF0C0109273 /* Pods-WeeklyWorkoutsTests.debug.xcconfig */,
+				DE94A033DF28274EA242AD05 /* Pods-WeeklyWorkoutsTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -231,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7627462A247250490002D7A8 /* Build configuration list for PBXNativeTarget "WeeklyWorkoutsTests" */;
 			buildPhases = (
+				AF6D5C7A7F98A23B4899DDC5 /* [CP] Check Pods Manifest.lock */,
 				7627460F247250490002D7A8 /* Sources */,
 				76274610247250490002D7A8 /* Frameworks */,
 				76274611247250490002D7A8 /* Resources */,
+				62102851C43BBD691B1DDD0F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,6 +343,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		62102851C43BBD691B1DDD0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeeklyWorkoutsTests/Pods-WeeklyWorkoutsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeeklyWorkoutsTests/Pods-WeeklyWorkoutsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeeklyWorkoutsTests/Pods-WeeklyWorkoutsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8A400E826A5722819CC98F4F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,6 +375,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeeklyWorkouts/Pods-WeeklyWorkouts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF6D5C7A7F98A23B4899DDC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeeklyWorkoutsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D4ABFAFD0A56726B215F1F2A /* [CP] Check Pods Manifest.lock */ = {
@@ -400,7 +447,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76274618247250490002D7A8 /* WeeklyWorkoutsTests.swift in Sources */,
-				761FE3BD2632FD0E00EA256D /* WorkoutResetChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +455,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76274623247250490002D7A8 /* WeeklyWorkoutsUITests.swift in Sources */,
-				761FE3BE2632FD0E00EA256D /* WorkoutResetChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,8 +655,9 @@
 		};
 		7627462B247250490002D7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDFAF5E1F8AE3BF0C0109273 /* Pods-WeeklyWorkoutsTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
@@ -632,8 +678,9 @@
 		};
 		7627462C247250490002D7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE94A033DF28274EA242AD05 /* Pods-WeeklyWorkoutsTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
@@ -655,7 +702,7 @@
 		7627462E247250490002D7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
 				INFOPLIST_FILE = WeeklyWorkoutsUITests/Info.plist;
@@ -675,7 +722,7 @@
 		7627462F247250490002D7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577J7R7E99;
 				INFOPLIST_FILE = WeeklyWorkoutsUITests/Info.plist;

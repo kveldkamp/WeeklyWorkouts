@@ -7,38 +7,67 @@
 //
 
 import XCTest
+@testable import WeeklyWorkouts
+
 class WeeklyWorkoutsTests: XCTestCase {
     
-
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        
+        UserDefaults.standard.removeObject(forKey: "weekInt")
     }
+    
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testWorkoutReset() {
+        // Since this function relies on multiple app 'launches' and userDefaults, we'll need to simulate multiple 'days' upon launch. These checks also have to be run sequentially in order to get a good test, that's why there's so many Asserts for this one test.
+        let resetChecker = WorkoutResetChecker()
+        var dateToUse = Date()
+        let userCalendar = Calendar(identifier: .gregorian)
+        var dateComponents = DateComponents()
         
-        //TODO: make this data into a unit test for resetChecker
-        /*var dateComponents = DateComponents()
-        dateComponents.year = 2022
-        dateComponents.month = 1
-        dateComponents.day = 3
-        dateComponents.timeZone = TimeZone(abbreviation: "PST") // Japan Standard Time
-        dateComponents.hour = 8
-        dateComponents.minute = 34
-        // Create date from components
-        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
-        let fakeDate = userCalendar.date(from: dateComponents)
-        if let fakeDate = fakeDate{
-            now = fakeDate
+        // set to monday in 2021
+        dateComponents.year = 2021
+        dateComponents.month = 4
+        dateComponents.day = 19
+        if let newDate = userCalendar.date(from: dateComponents){
+            dateToUse = newDate
         }
-         */
+        XCTAssertEqual(resetChecker.checkForWorkoutReset(now: dateToUse), WorkoutResetCheckResult.unknown)
+        
+        //increment by less than a week (next sunday)
+        dateComponents.year = 2021
+        dateComponents.month = 4
+        dateComponents.day = 25
+        if let newDate = userCalendar.date(from: dateComponents){
+            dateToUse = newDate
+        }
+        XCTAssertEqual(resetChecker.checkForWorkoutReset(now: dateToUse), WorkoutResetCheckResult.upToDate)
+        
+        //increment to the next day (monday)
+        dateComponents.year = 2021
+        dateComponents.month = 4
+        dateComponents.day = 26
+        if let newDate = userCalendar.date(from: dateComponents){
+            dateToUse = newDate
+        }
+        XCTAssertEqual(resetChecker.checkForWorkoutReset(now: dateToUse), WorkoutResetCheckResult.resetNeeded)
+        
+        //increment to the following monday
+        dateComponents.year = 2021
+        dateComponents.month = 5
+        dateComponents.day = 3
+        if let newDate = userCalendar.date(from: dateComponents){
+            dateToUse = newDate
+        }
+        XCTAssertEqual(resetChecker.checkForWorkoutReset(now: dateToUse), WorkoutResetCheckResult.resetNeeded)
+        
+        //increment by a day again
+        dateComponents.year = 2021
+        dateComponents.month = 5
+        dateComponents.day = 4
+        if let newDate = userCalendar.date(from: dateComponents){
+            dateToUse = newDate
+        }
+        XCTAssertEqual(resetChecker.checkForWorkoutReset(now: dateToUse), WorkoutResetCheckResult.upToDate)
+         
     }
 
     func testPerformanceExample() {
