@@ -24,6 +24,9 @@ class CoreDataManager{
         workout.setValue(newWorkout.shortDescription , forKeyPath: "shortSummary")
         workout.setValue(newWorkout.longDescription, forKeyPath: "longSummary")
         workout.setValue(newWorkout.completed, forKeyPath: "completed")
+        if let sharedActivityId = newWorkout.sharedActivityId{
+            workout.setValue(sharedActivityId, forKeyPath: "sharedActivityId")
+        }
         if let firebaseId = newWorkout.firebaseId{
             workout.setValue(firebaseId, forKeyPath: "firebaseId")
         }

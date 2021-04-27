@@ -146,6 +146,7 @@ class WeeklyWorkoutOverview: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "WorkoutDetail") as? WorkoutDetailVC{
             vc.shortText = selectedWorkout.value(forKeyPath: "shortSummary") as? String ?? "unknown"
             vc.longText = selectedWorkout.value(forKeyPath: "longSummary") as? String ?? "unknown"
+            vc.sharedActivityId = selectedWorkout.value(forKeyPath: "sharedActivityId") as? String ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

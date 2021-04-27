@@ -78,12 +78,35 @@ class AddWorkoutVC: UIViewController {
         self.view.addGestureRecognizer(tap)
     }
     
+    func workoutInputIsInvalid() -> Bool{
+        if shortDescription.text == ""{
+            return true
+        }
+        return false
+    }
+    
+    func cleanOptionalDescription(textToClean: String) -> String{
+        if textToClean == "Enter a longer description here (optional)"{
+            return ""
+        }
+        return textToClean
+    }
     
     @IBAction func saveWorkout(_ sender: Any) {
-        guard let shortDescription = shortDescription.text, let longDescription = longDescription.text else {return}
+        if workoutInputIsInvalid(){
+            showDefaultError(message: "Enter a workout name")
+            return
+        }
+        guard let shortDescription = shortDescription.text, var longDescription = longDescription.text else {return}
+        
+        longDescription = cleanOptionalDescription(textToClean: longDescription)
+
         let newWorkout = WorkoutCached(shortDescription: shortDescription, longDescription: longDescription , completed: false)
         let timesPerWeek = (pickerView.selectedRow(inComponent: 0) + 1) //account for zero indexing
         
+        if timesPerWeek > 1{
+            newWorkout.sharedActivityId = String((Date().timeIntervalSince1970).rounded())
+        }
         for _ in 1...timesPerWeek{
             saveToFireBase(newWorkout: newWorkout)
         }
@@ -94,17 +117,17 @@ class AddWorkoutVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func showDefaultError(message:String){
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func saveToFireBase(newWorkout: WorkoutCached){
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
-        let shortSummary = newWorkout.shortDescription
-        let longSummary = newWorkout.longDescription
-        ref = db.collection("workout").addDocument(data: [
-            "shortSummary": shortSummary,
-            "longSummary": longSummary,
-            "completed" : false,
-            "dateAdded" : Date().toString()
-        ]) { err in
+        let dataDictionary = buildFireBasePayload(newWorkout: newWorkout)
+        ref = db.collection("workout").addDocument(data: dataDictionary) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
@@ -114,6 +137,18 @@ class AddWorkoutVC: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+    func buildFireBasePayload(newWorkout: WorkoutCached) -> [String: Any]{
+        var dictionary = ["shortSummary": newWorkout.shortDescription,
+                          "longSummary": newWorkout.longDescription,
+                          "completed" : false,
+                          "dateAdded" : Date().toString()] as [String : Any]
+        
+        if let sharedActivityId = newWorkout.sharedActivityId{
+            dictionary["sharedActivityId"] = sharedActivityId
+        }
+        return dictionary
     }
     
 }
