@@ -155,21 +155,16 @@
 		762745FC247250460002D7A8 /* WeeklyWorkouts */ = {
 			isa = PBXGroup;
 			children = (
-				76B52EF525AD64CE00E77D17 /* Models */,
-				76084EB3256B951E0080FFD3 /* CoreData */,
 				762745FD247250460002D7A8 /* AppDelegate.swift */,
 				762745FF247250460002D7A8 /* SceneDelegate.swift */,
-				76274601247250460002D7A8 /* WeeklyWorkoutOverview.swift */,
-				76350317247259020091211C /* WorkoutCell.swift */,
-				76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */,
-				761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */,
-				76274603247250460002D7A8 /* Main.storyboard */,
-				76274609247250480002D7A8 /* Assets.xcassets */,
-				7627460B247250480002D7A8 /* LaunchScreen.storyboard */,
+				76F340F226384853002FAB44 /* Storyboards */,
+				76F340F32638489C002FAB44 /* Screens */,
+				76084EB3256B951E0080FFD3 /* CoreData */,
+				76084E71256B87AB0080FFD3 /* Utility */,
+				76B52EF525AD64CE00E77D17 /* Models */,
 				7627460E247250480002D7A8 /* Info.plist */,
 				7629C17B253EB4E8003B71E1 /* GoogleService-Info.plist */,
-				76084E71256B87AB0080FFD3 /* Utility */,
-				761FE3BB2632FD0E00EA256D /* WorkoutResetChecker.swift */,
+				76274609247250480002D7A8 /* Assets.xcassets */,
 			);
 			path = WeeklyWorkouts;
 			sourceTree = "<group>";
@@ -198,6 +193,35 @@
 				766000FA24725A3D0069B740 /* WorkoutCached.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		76F340F226384853002FAB44 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				76274603247250460002D7A8 /* Main.storyboard */,
+				7627460B247250480002D7A8 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		76F340F32638489C002FAB44 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				76C58DB424A95C70001AB553 /* AddWorkoutVC.swift */,
+				761CC8E124B41DA2005F8F9F /* WorkoutDetailVC.swift */,
+				76F340F4263848A2002FAB44 /* ActivityList */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		76F340F4263848A2002FAB44 /* ActivityList */ = {
+			isa = PBXGroup;
+			children = (
+				76274601247250460002D7A8 /* WeeklyWorkoutOverview.swift */,
+				76350317247259020091211C /* WorkoutCell.swift */,
+				761FE3BB2632FD0E00EA256D /* WorkoutResetChecker.swift */,
+			);
+			path = ActivityList;
 			sourceTree = "<group>";
 		};
 		9124123E1C025EFBA6BCC1FC /* Pods */ = {
