@@ -104,6 +104,24 @@ class WeeklyWorkoutOverview: UITableViewController {
         }
     }
     
+    func deleteWorkout(workout: Workout, atIndex: Int){
+        deleteWorkoutFromCoreData(workout: workout)
+        weeklyWorkouts.remove(at: atIndex)
+        tableView.reloadData()
+    }
+    
+    func deleteMultipleWorkouts(sharedActivityId: String){
+        if let weeklyWorkouts = weeklyWorkouts as? [Workout]{
+            for workout in weeklyWorkouts{
+                if workout.sharedActivityId == sharedActivityId{
+                    deleteWorkoutFromCoreData(workout: workout)
+                }
+            }
+        }
+        weeklyWorkouts.removeAll(where:{ $0.value(forKeyPath: "sharedActivityId") as? String == sharedActivityId})
+        tableView.reloadData()
+    }
+    
     
     @objc func workoutSwitchChanged(uiSwitch: UISwitch){
         guard uiSwitch.tag < weeklyWorkouts.count else { // safe indexing
@@ -154,15 +172,26 @@ class WeeklyWorkoutOverview: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let workout = weeklyWorkouts[indexPath.row] as! Workout
-            if workout.sharedActivityId != nil{
-                let alert = UIAlertController(title: "Delete All?", message: "This activity was created in a group, do you wish to delete all instances of it?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            if workout.sharedActivityId != nil {
+                let alert = UIAlertController(title: "Delete all matching activities?", message: "This activity was created in a group, do you want to delete all matching activities?", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Delete all", style: UIAlertAction.Style.destructive, handler: { action in
+                    self.deleteMultipleWorkouts(sharedActivityId: workout.sharedActivityId!)
+                }))
+                alert.addAction(UIAlertAction(title: "Just delete one", style: UIAlertAction.Style.default, handler: {action in
+                    self.deleteWorkout(workout: workout, atIndex: indexPath.row)
+                }))
+                alert.addAction(UIAlertAction(title: "Nevermind", style: UIAlertAction.Style.cancel, handler: nil))
+                
+                
                 self.present(alert, animated: true, completion: nil)
             }
-            deleteWorkoutFromCoreData(workout: workout)
-            weeklyWorkouts.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+            
+            else{
+                deleteWorkout(workout: workout, atIndex: indexPath.row)
+            }
+            
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
