@@ -160,13 +160,18 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedWorkout = weeklyWorkouts[indexPath.row]
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "WorkoutDetail") as? WorkoutDetailVC{
-            vc.shortText = selectedWorkout.value(forKeyPath: "shortSummary") as? String ?? "unknown"
-            vc.longText = selectedWorkout.value(forKeyPath: "longSummary") as? String ?? "unknown"
-            vc.sharedActivityId = selectedWorkout.value(forKeyPath: "sharedActivityId") as? String ?? ""
+        if let selectedWorkout = weeklyWorkouts[indexPath.row] as? Workout{
+            
+            guard let vc = storyboard?.instantiateViewController(identifier: "WorkoutDetail", creator: { coder in
+                return WorkoutDetailVC(coder: coder, activity: selectedWorkout)
+            }) else {
+                fatalError("Failed to load EditUserViewController from storyboard.")
+            }
+            vc.activity = selectedWorkout
             self.navigationController?.pushViewController(vc, animated: true)
+            
         }
+
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

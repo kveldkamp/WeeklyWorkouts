@@ -30,7 +30,11 @@ class CoreDataManager{
         if let firebaseId = newWorkout.firebaseId{
             workout.setValue(firebaseId, forKeyPath: "firebaseId")
         }
+        saveContext()
         
+    }
+    
+    func saveContext(){
         do {
             try context.save()
             NotificationCenter.default.post(name: NSNotification.Name.CoreData.WorkoutAdded, object: nil)
