@@ -73,13 +73,15 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     func loadWorkouts(){
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Workout")
-        do {
-            weeklyWorkouts = try CoreDataManager.sharedInstance.context.fetch(fetchRequest)
+        if let fetchedWorkouts = CoreDataManager.sharedInstance.fetchWorkouts(){
+            weeklyWorkouts = fetchedWorkouts
             tableView.reloadData()
-        } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
         }
+        else{
+            print("unable to load workouts")
+            //show UI error
+        }
+        
     }
     
     func completeWorkout(workout: NSManagedObject){
@@ -101,6 +103,36 @@ class WeeklyWorkoutOverview: UITableViewController {
         }
         catch{
             print("unable to undo workout")
+        }
+    }
+    
+    func deleteWorkout(workout: Workout, atIndex: Int){
+        checkIfWorkoutIsNoLongerShared(sharedActivityId: workout.sharedActivityId)
+        deleteWorkoutFromCoreData(workout: workout)
+        weeklyWorkouts.remove(at: atIndex)
+        tableView.reloadData()
+    }
+    
+    func deleteMultipleWorkouts(sharedActivityId: String){
+        if let weeklyWorkouts = weeklyWorkouts as? [Workout]{
+            for workout in weeklyWorkouts{
+                if workout.sharedActivityId == sharedActivityId{
+                    deleteWorkoutFromCoreData(workout: workout)
+                }
+            }
+        }
+        weeklyWorkouts.removeAll(where:{ $0.value(forKeyPath: "sharedActivityId") as? String == sharedActivityId})
+        tableView.reloadData()
+    }
+    
+    func checkIfWorkoutIsNoLongerShared(sharedActivityId: String?){
+        if let sharedActivityId = sharedActivityId, let workouts = weeklyWorkouts as? [Workout]{
+            let filteredWorkouts = workouts.filter({($0.sharedActivityId == sharedActivityId)})
+            
+            // it's about to be deleted and down to 1, so no longer shared
+            if filteredWorkouts.count == 2{
+                CoreDataManager.sharedInstance.removeSharedActivityId(sharedActivityId: sharedActivityId)
+            }
         }
     }
     
@@ -142,23 +174,43 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedWorkout = weeklyWorkouts[indexPath.row]
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "WorkoutDetail") as? WorkoutDetailVC{
-            vc.shortText = selectedWorkout.value(forKeyPath: "shortSummary") as? String ?? "unknown"
-            vc.longText = selectedWorkout.value(forKeyPath: "longSummary") as? String ?? "unknown"
+        if let selectedWorkout = weeklyWorkouts[indexPath.row] as? Workout{
+            
+            guard let vc = storyboard?.instantiateViewController(identifier: "WorkoutDetail", creator: { coder in
+                return WorkoutDetailVC(coder: coder, activity: selectedWorkout)
+            }) else {
+                fatalError("Failed to load EditUserViewController from storyboard.")
+            }
+            vc.activity = selectedWorkout
             self.navigationController?.pushViewController(vc, animated: true)
+            
         }
+
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let workout = weeklyWorkouts[indexPath.row]
-            deleteWorkoutFromCoreData(workout: workout)
-            weeklyWorkouts.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            let workout = weeklyWorkouts[indexPath.row] as! Workout
+            if workout.sharedActivityId != nil {
+                let alert = UIAlertController(title: "Delete all matching activities?", message: "This activity was created in a group, do you want to delete all matching activities?", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Delete all", style: UIAlertAction.Style.destructive, handler: { action in
+                    self.deleteMultipleWorkouts(sharedActivityId: workout.sharedActivityId!)
+                }))
+                alert.addAction(UIAlertAction(title: "Just delete one", style: UIAlertAction.Style.default, handler: {action in
+                    self.deleteWorkout(workout: workout, atIndex: indexPath.row)
+                }))
+                alert.addAction(UIAlertAction(title: "Nevermind", style: UIAlertAction.Style.cancel, handler: nil))
+                
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+            else{
+                deleteWorkout(workout: workout, atIndex: indexPath.row)
+            }
+            
+            
         }
     }
 
