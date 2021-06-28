@@ -57,15 +57,14 @@ class WorkoutDetailVC : UIViewController{
         showEditButton()
         self.navigationItem.hidesBackButton = false
         
-        if activity.sharedActivityId != ""{
+        if let sharedActivityId = activity.sharedActivityId{
             let alert = UIAlertController(title: "Update all matching activities?", message: "This activity was created in a group, do you want to update all matching activities?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Update all", style: UIAlertAction.Style.destructive, handler: { action in
-                // update a bunch somehow
+                CoreDataManager.sharedInstance.updateActiviesBySharedActivityId(longDescription: self.longDescription.text, sharedActivityId: sharedActivityId)
             }))
             alert.addAction(UIAlertAction(title: "Just Update one", style: UIAlertAction.Style.default, handler: {action in
                 self.saveToCoreData()
-                //send to firebase
             }))
             alert.addAction(UIAlertAction(title: "Nevermind", style: UIAlertAction.Style.cancel, handler: nil))
             
@@ -74,13 +73,13 @@ class WorkoutDetailVC : UIViewController{
         }
         else{
             saveToCoreData()
-            //send to firebase
         }
     }
     
     func saveToCoreData(){
         activity.longSummary = longDescription.text
         CoreDataManager.sharedInstance.saveContext()
+        //send to firebase
     }
     
 }

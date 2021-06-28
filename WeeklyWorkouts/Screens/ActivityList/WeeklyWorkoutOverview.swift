@@ -73,13 +73,15 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     func loadWorkouts(){
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Workout")
-        do {
-            weeklyWorkouts = try CoreDataManager.sharedInstance.context.fetch(fetchRequest)
+        if let fetchedWorkouts = CoreDataManager.sharedInstance.fetchWorkouts(){
+            weeklyWorkouts = fetchedWorkouts
             tableView.reloadData()
-        } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
         }
+        else{
+            print("unable to load workouts")
+            //show UI error
+        }
+        
     }
     
     func completeWorkout(workout: NSManagedObject){
@@ -105,6 +107,7 @@ class WeeklyWorkoutOverview: UITableViewController {
     }
     
     func deleteWorkout(workout: Workout, atIndex: Int){
+        checkIfWorkoutIsNoLongerShared(sharedActivityId: workout.sharedActivityId)
         deleteWorkoutFromCoreData(workout: workout)
         weeklyWorkouts.remove(at: atIndex)
         tableView.reloadData()
@@ -120,6 +123,17 @@ class WeeklyWorkoutOverview: UITableViewController {
         }
         weeklyWorkouts.removeAll(where:{ $0.value(forKeyPath: "sharedActivityId") as? String == sharedActivityId})
         tableView.reloadData()
+    }
+    
+    func checkIfWorkoutIsNoLongerShared(sharedActivityId: String?){
+        if let sharedActivityId = sharedActivityId, let workouts = weeklyWorkouts as? [Workout]{
+            let filteredWorkouts = workouts.filter({($0.sharedActivityId == sharedActivityId)})
+            
+            // it's about to be deleted and down to 1, so no longer shared
+            if filteredWorkouts.count == 2{
+                CoreDataManager.sharedInstance.removeSharedActivityId(sharedActivityId: sharedActivityId)
+            }
+        }
     }
     
     
@@ -197,8 +211,6 @@ class WeeklyWorkoutOverview: UITableViewController {
             }
             
             
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 
